@@ -1,0 +1,55 @@
+package work.upstarts.editorjskit.ui.adapterdelegates
+
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.text.parseAsHtml
+import androidx.recyclerview.widget.RecyclerView
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
+import kotlinx.android.synthetic.main.item_paragraph.view.*
+import work.upstarts.editorjskit.R
+import work.upstarts.editorjskit.environment.inflate
+import work.upstarts.editorjskit.models.EJBlock
+import work.upstarts.editorjskit.models.EJBlockType
+import work.upstarts.editorjskit.models.EJRawHtmlBlock
+import work.upstarts.editorjskit.ui.theme.EJStyle
+
+class RawHtmlAdapterDelegate(
+    private val theme: EJStyle? = null
+) : AdapterDelegate<MutableList<EJBlock>>() {
+
+    override fun isForViewType(items: MutableList<EJBlock>, position: Int): Boolean {
+        return items[position].type == EJBlockType.RAW_HTML
+    }
+
+    override fun onBindViewHolder(
+        items: MutableList<EJBlock>,
+        position: Int,
+        holder: RecyclerView.ViewHolder,
+        payloads: MutableList<Any>
+    ) = (holder as ViewHolder).bind(items[position] as EJRawHtmlBlock)
+
+
+    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
+        val view = parent.inflate(R.layout.item_paragraph)
+
+        theme?.let {
+            view.paragraphTv.apply {
+                it.applyParagraphTextStyle(this)
+            }
+        }
+
+        return ViewHolder(view)
+    }
+
+
+    private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private lateinit var rawHtmlBlock: EJRawHtmlBlock
+
+        fun bind(rawHtmlBlock: EJRawHtmlBlock) {
+            this.rawHtmlBlock = rawHtmlBlock
+            with(itemView) {
+                paragraphTv.text = rawHtmlBlock.data.html.parseAsHtml()
+            }
+        }
+    }
+}

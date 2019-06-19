@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bullet_size">4dp</dimen>
+    <dimen name="bullet_top_margin">10dp</dimen>
+    <dimen name="bullet_right_margin">3dp</dimen>
+</resources>
