@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
 
 
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -44,7 +45,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    api 'androidx.core:core-ktx:1.0.2'
 
     api 'com.google.code.gson:gson:2.8.5'
 
@@ -58,10 +59,11 @@ dependencies {
 
 publish {
     userOrg = 'heckslam'
-    groupId = 'work.upstarts'
+    groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit'
     artifactId = 'ejkit'
     publishVersion = '0.0.1'
+    licences = ['MIT']
     desc = 'Library that helps to work with EditorJS'
-    website = 'https://upstarts.work'
+    website = 'https://github.com/Upstarts/editor.js-kit-android'
 }
