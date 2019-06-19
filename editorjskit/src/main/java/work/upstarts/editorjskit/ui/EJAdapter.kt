@@ -8,7 +8,7 @@ import work.upstarts.editorjskit.ui.adapterdelegates.*
 import work.upstarts.editorjskit.ui.theme.EJStyle
 
 
-class EditorJsAdapter(style: EJStyle? = EJKit.ejStyle) : AsyncListDifferDelegationAdapter<EJBlock>(DIFF_CALLBACK) {
+open class EditorJsAdapter(style: EJStyle? = EJKit.ejStyle) : AsyncListDifferDelegationAdapter<EJBlock>(DIFF_CALLBACK) {
     init {
         initDelegates(style)
     }
