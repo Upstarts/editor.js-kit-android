@@ -87,6 +87,20 @@
       }
     },
     {
+      "type": "image",
+      "data": {
+        "file": {
+          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png",
+          "width": 136,
+          "height": 124
+        },
+        "caption": "",
+        "withBorder": false,
+        "stretched": false,
+        "withBackground": false
+      }
+    },
+    {
       "type" : "image",
       "data" : {
         "file" : {

@@ -9,5 +9,7 @@ data class EJImageData(
 ): EJData()
 
 data class ImageFile(
-    val url: String
+    val url: String,
+    val width: Int?,
+    val height: Int?
 )

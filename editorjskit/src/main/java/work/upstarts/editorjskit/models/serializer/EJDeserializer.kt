@@ -1,19 +1,29 @@
 package work.upstarts.editorjskit.models.serializer
 
+import android.util.Log
 import com.google.gson.*
+import work.upstarts.editorjskit.BuildConfig
 import work.upstarts.editorjskit.EJKit
 import work.upstarts.editorjskit.models.*
 import work.upstarts.editorjskit.models.data.EJDelimiterData
 import java.lang.reflect.Type
 
-class EJDeserializer : JsonDeserializer<List<EJBlock>> {
+class EJDeserializer : JsonDeserializer<MutableList<EJBlock>> {
 
     @Throws(JsonParseException::class)
-    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): List<EJBlock> {
+    override fun deserialize(
+        json: JsonElement,
+        typeOfT: Type,
+        context: JsonDeserializationContext
+    ): MutableList<EJBlock> {
 
         val resultBlockList = mutableListOf<EJBlock>()
 
         val blocks = json.asJsonArray
+
+        if (BuildConfig.DEBUG) {
+            Log.d("EJDeserializer", "blocks $blocks")
+        }
 
         for (block in blocks) {
             val blockObj = block.asJsonObject

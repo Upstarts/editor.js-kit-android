@@ -13,7 +13,7 @@ open class EditorJsAdapter(style: EJStyle? = EJKit.ejStyle) : AsyncListDifferDel
         initDelegates(style)
     }
 
-    private fun initDelegates(style: EJStyle?) {
+    fun initDelegates(style: EJStyle?) {
         delegatesManager
             .addDelegate(HeaderAdapterDelegate(style))
             .addDelegate(ParagraphAdapterDelegate(style))

@@ -41,7 +41,7 @@ class ImageAdapterDelegate(
             with(itemView) {
                 val data = paragraphBlock.data
                 theme?.applyImageStyle(imageView, data)
-                imageView.loadImage(data.file.url, data.stretched)
+                imageView.loadImage(data.file.url, data)
             }
         }
     }
