@@ -15,13 +15,13 @@ import work.upstarts.editorjskit.ui.theme.EJStyle
 
 class ImageAdapterDelegate(
     private val theme: EJStyle? = null
-) : AdapterDelegate<MutableList<EJBlock>>() {
-    override fun isForViewType(items: MutableList<EJBlock>, position: Int): Boolean {
-        return items[position].type == EJBlockType.IMAGE
+) : AdapterDelegate<MutableList<Any>>() {
+    override fun isForViewType(items: MutableList<Any>, position: Int): Boolean {
+        return items[position] is EJBlock && (items[position] as EJBlock).type == EJBlockType.IMAGE
     }
 
     override fun onBindViewHolder(
-        items: MutableList<EJBlock>,
+        items: MutableList<Any>,
         position: Int,
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>

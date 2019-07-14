@@ -13,13 +13,13 @@ import work.upstarts.editorjskit.ui.theme.EJStyle
 
 class DividerAdapterDelegate(
     private val theme: EJStyle? = null
-) : AdapterDelegate<MutableList<EJBlock>>() {
-    override fun isForViewType(items: MutableList<EJBlock>, position: Int): Boolean {
-        return items[position].type == EJBlockType.DELIMITER
+) : AdapterDelegate<MutableList<Any>>() {
+    override fun isForViewType(items: MutableList<Any>, position: Int): Boolean {
+        return items[position] is EJBlock && (items[position] as EJBlock).type == EJBlockType.DELIMITER
     }
 
     override fun onBindViewHolder(
-        items: MutableList<EJBlock>,
+        items: MutableList<Any>,
         position: Int,
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>

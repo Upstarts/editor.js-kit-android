@@ -3,22 +3,25 @@ package work.upstarts
 import android.content.res.AssetManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.serializer.EJDeserializer
 import work.upstarts.editorjskit.ui.EditorJsAdapter
 import work.upstarts.editorjskit.ui.theme.EJStyle
-import com.google.gson.reflect.TypeToken
-import work.upstarts.editorjskit.EJKit
 
 
 class MainActivity : AppCompatActivity() {
 
     private val rvAdapter: EditorJsAdapter by lazy {
-        EditorJsAdapter(EJStyle.create(this.applicationContext))
+        EditorJsAdapter(
+            EJStyle.builderWithDefaults(applicationContext)
+                .thematicBreakColor(ContextCompat.getColor(this, R.color.delimeter_color))
+                .build()
+        )
     }
 
 

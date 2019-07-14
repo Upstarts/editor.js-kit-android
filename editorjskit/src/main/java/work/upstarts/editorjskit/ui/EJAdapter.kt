@@ -1,5 +1,6 @@
 package work.upstarts.editorjskit.ui
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import work.upstarts.editorjskit.EJKit
@@ -8,7 +9,10 @@ import work.upstarts.editorjskit.ui.adapterdelegates.*
 import work.upstarts.editorjskit.ui.theme.EJStyle
 
 
-open class EditorJsAdapter(style: EJStyle? = EJKit.ejStyle) : AsyncListDifferDelegationAdapter<EJBlock>(DIFF_CALLBACK) {
+open class EditorJsAdapter(
+    style: EJStyle? = EJKit.ejStyle,
+    diffCallback: DiffUtil.ItemCallback<Any>? = null
+) : AsyncListDifferDelegationAdapter<Any>(diffCallback ?: DIFF_CALLBACK) {
     init {
         initDelegates(style)
     }
@@ -25,13 +29,15 @@ open class EditorJsAdapter(style: EJStyle? = EJKit.ejStyle) : AsyncListDifferDel
     }
 }
 
-private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<EJBlock>() {
+private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Any>() {
 
-    override fun areItemsTheSame(oldItem: EJBlock, newItem: EJBlock): Boolean {
-        return oldItem.data == newItem.data
+    override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+        if (oldItem === newItem) return true
+        return if (newItem is EJBlock && oldItem is EJBlock) {
+            oldItem.data == newItem.data
+        } else false
     }
 
-    override fun areContentsTheSame(oldItem: EJBlock, newItem: EJBlock): Boolean {
-        return oldItem.hashCode() == newItem.hashCode()
-    }
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(oldItem: Any, newItem: Any) = oldItem == newItem
 }
