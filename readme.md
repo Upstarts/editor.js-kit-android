@@ -1,17 +1,31 @@
-### EditorJSKit
 
-EditorJsKit aims to simplify working with EditorJS editor in android. It provides support of the following components:
+<p align="center">
+  <img src="logo.png" width=400 />
+</p>
 
-  - Headers
-  - Paragraph
-  - Delimiter
-  - Image
-  - List
-  - Raw html
-  - Table
+[ ![Download](https://api.bintray.com/packages/heckslam/EditorJSKit/ejkit/images/download.svg) ](https://bintray.com/heckslam/EditorJSKit/ejkit/_latestVersion)
 
+## About
 
-  [ ![Download](https://api.bintray.com/packages/heckslam/EditorJSKit/ejkit/images/download.svg) ](https://bintray.com/heckslam/EditorJSKit/ejkit/_latestVersion)
+A non-official Android Framework for [Editor.js](https://editorjs.io) - block styled editor. It's purpose to make easy use of rendering and parsing of blocks.
+
+Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json) into native views like that 👇
+
+<p align="center">
+  <img src="screenshot.png" width=420 />
+</p>
+
+#### Supported blocks
+* 🎩 Header
+* 🥑 Raw HTML
+* 📷 Image
+* 🖌 Delimiter
+* 💌 Paragraph
+* 🕸 Link
+* 🌿 List
+* 📋 Table
+
+## Installation
 
 ```
 maven { url "https://dl.bintray.com/heckslam/EditorJSKit" }
@@ -37,7 +51,6 @@ compile 'com.github.upstarts:ejkit:X.X.X' - look at badge above for latest versi
 ```
     rvAdapter.items = ejResponse.blocks
 ```
-[Sample](https://github.com/Upstarts/editor.js-kit-android/blob/master/app/src/main/java/work/upstarts/MainActivity.kt)
 
 ## Customizing
 You can set style globally via `EJKit.style = ...` for all adapters, or pass `EJStyle` instance for specific adapter.
@@ -90,3 +103,15 @@ data class EJTableData(
 3. And register it
 `EJKit.register(EJCustomBlock(CustomB.TABLE, EJTableData::class.java))
 `
+
+## Example
+
+You can find and test the example in a [sample activity](app/src/main/java/work/upstarts/MainActivity.kt)
+
+## Author
+
+[Upstarts team](https://upstarts.work)
+
+[Vadim Popov](https://t.me/popovvadim) - Architecture
+
+[Ruslan Aliev](https://github.com/heckslam) - Implementation
