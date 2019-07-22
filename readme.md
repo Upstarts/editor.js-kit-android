@@ -112,6 +112,6 @@ You can find and test the example in a [sample activity](app/src/main/java/work/
 
 [Upstarts team](https://upstarts.work)
 
-[Vadim Popov](https://t.me/popovvadim) - Architecture
+[Vadim Popov](https://t.me/popovvadim) - Architecture draft
 
-[Ruslan Aliev](https://github.com/heckslam) - Implementation
+[Ruslan Aliev](https://github.com/heckslam) - Architecture, Implementation
