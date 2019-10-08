@@ -17,4 +17,5 @@ class HeaderTextView @JvmOverloads constructor(
         if (paint.textSize != headerSize)
             paint.textSize = headerSize
     }
+
 }

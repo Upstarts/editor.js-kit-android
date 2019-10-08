@@ -3,4 +3,9 @@
     <dimen name="bullet_size">4dp</dimen>
     <dimen name="bullet_top_margin">10dp</dimen>
     <dimen name="bullet_right_margin">3dp</dimen>
+    <dimen name="image_text_margin">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_high">24dp</dimen>
+    <dimen name="html_margin">300dp</dimen>
 </resources>

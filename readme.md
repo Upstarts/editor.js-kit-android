@@ -70,6 +70,7 @@ EJKit.ejStyle = EJStyle.emptyBuilder()
             .paragraphTypeface(ResourcesCompat.getFont(this, R.font.alice)!!)
             .paragraphTextSize(resources.getDimensionPixelSize(R.dimen.default_font_size))
             .headingTypeface(ResourcesCompat.getFont(this, R.font.alice)!!)
+            .headingTypefaceDetailed(ResourcesCompat.getFont(this, R.font.blade)!!, HeadingLevel.h3) 
             .headingTextSizes(floatArrayOf(32f, 24f, 18f, 16f, 14f, 12f)) // sizes used by default for headers
             .thematicBreakColor(getColor(R.color.colorPrimary)) // delimeter color
             .thematicBreakHeight(resources.getDimensionPixelSize(R.dimen.delimiter_height)) //delimiter height

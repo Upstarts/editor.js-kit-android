@@ -42,7 +42,7 @@ class ListAdapterDelegate(
         fun bind(listBlock: EJListBlock) {
             this.listData = listBlock.data
             itemView.container.removeAllViews()
-
+            theme?.applyListMargin(itemView)
             listData.items.forEachIndexed { index, s ->
                 if (listData.type == ListType.ORDERED)
                     prefix = "${index + 1}."

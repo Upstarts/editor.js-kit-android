@@ -35,6 +35,7 @@ class RawHtmlAdapterDelegate(
         theme?.let {
             view.paragraphTv.apply {
                 it.applyParagraphTextStyle(this)
+                it.applyParagraphMargin(this, 16)
             }
         }
 

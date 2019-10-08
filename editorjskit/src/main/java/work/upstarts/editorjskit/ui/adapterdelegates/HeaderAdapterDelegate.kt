@@ -17,6 +17,8 @@ class HeaderAdapterDelegate(
     private val theme: EJStyle? = null
 ) : AdapterDelegate<MutableList<Any>>() {
 
+    var items: MutableList<Any>? = null
+
     override fun isForViewType(items: MutableList<Any>, position: Int): Boolean {
         return items[position] is EJBlock && (items[position] as EJBlock).type == EJBlockType.HEADER
     }
@@ -31,11 +33,6 @@ class HeaderAdapterDelegate(
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val view = parent.inflate(R.layout.item_header)
-
-        applyHeaderTheme(view) { theme, paint ->
-            theme.applyHeadingTextStyle(paint)
-        }
-
         return ViewHolder(view)
     }
 
@@ -47,18 +44,23 @@ class HeaderAdapterDelegate(
         }
     }
 
-
     private inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var headerBlock: EJHeaderBlock
 
         fun bind(headerBlock: EJHeaderBlock) {
             this.headerBlock = headerBlock
+
+            applyHeaderTheme(view) { theme, paint ->
+                theme.applyHeadingTextStyle(paint, headerBlock.data.level)
+            }
+
             with(itemView) {
                 headerTv.text = headerBlock.data.text
             }
 
             applyHeaderTheme(view) { theme, paint ->
                 theme.applyHeadingTextSize(view.headerTv, headerBlock.data.level)
+                theme.applyHeadingMargin(view, headerBlock.data.level)
             }
         }
     }
