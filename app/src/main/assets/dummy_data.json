@@ -5,7 +5,7 @@
       "type" : "header",
       "data" : {
         "text" : "Editor.js",
-        "level" : 2
+        "level" : 1
       }
     },
     {
@@ -90,13 +90,11 @@
       "type": "image",
       "data": {
         "file": {
-          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png",
-          "width": 136,
-          "height": 124
+          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png"
         },
-        "caption": "",
+
         "withBorder": false,
-        "stretched": false,
+        "stretched": true,
         "withBackground": false
       }
     },
@@ -104,11 +102,23 @@
       "type" : "image",
       "data" : {
         "file" : {
-          "url" : "https://codex.so/upload/redactor_images/o_e48549d1855c7fc1807308dd14990126.jpg"
+          "url" : "https://vesort.ru/wa-data/public/photos/70/00/70/70.1500x0.jpg"
         },
         "caption" : "",
-        "withBorder" : true,
-        "stretched" : false,
+        "withBorder" : false,
+        "stretched" : true,
+        "withBackground" : true
+      }
+    },
+    {
+      "type" : "image",
+      "data" : {
+        "file" : {
+          "url" : "https://vesort.ru/wa-data/public/shop/products/38/01/138/images/48/48.970x0.jpg"
+        },
+        "caption" : "ghjfghjfghjgh",
+        "withBorder" : false,
+        "stretched" : true,
         "withBackground" : true
       }
     },

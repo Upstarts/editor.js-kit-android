@@ -33,14 +33,13 @@ class ParagraphAdapterDelegate(
         val view = parent.inflate(R.layout.item_paragraph)
 
         theme?.let {
-            view.paragraphTv.apply {
+            view.apply {
                 it.applyParagraphTextStyle(this)
+                it.applyParagraphMargin(this, 16)
             }
         }
-
         return ViewHolder(view)
     }
-
 
     private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var headerBlock: EJParagraphBlock

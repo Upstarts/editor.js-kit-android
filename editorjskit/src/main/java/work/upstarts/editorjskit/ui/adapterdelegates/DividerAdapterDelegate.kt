@@ -29,12 +29,13 @@ class DividerAdapterDelegate(
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val view = parent.inflate(R.layout.item_divider)
         theme?.applyThematicBreakStyle(view.ejDivider)
-
+        theme?.margins?.deviderMargin?.let {
+            theme?.applyViewMargins(it, view)
+        }
         return ViewHolder(view)
     }
 
     private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         fun bind() {
         }
     }

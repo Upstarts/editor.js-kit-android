@@ -27,7 +27,6 @@ class ImageAdapterDelegate(
         payloads: MutableList<Any>
     ) = (holder as ViewHolder).bind(items[position] as EJImageBlock)
 
-
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val view = parent.inflate(R.layout.item_image)
         return ViewHolder(view)
@@ -41,7 +40,13 @@ class ImageAdapterDelegate(
             with(itemView) {
                 val data = paragraphBlock.data
                 theme?.applyImageStyle(imageView, data)
+                theme?.applyImageMargin(this, data)
                 imageView.loadImage(data.file.url, data)
+                val caption = data.caption
+                    if (caption!=null&&caption.isNotEmpty()) {
+                        imageCaption.text = caption
+                        imageCaption.visibility = View.VISIBLE
+                }
             }
         }
     }
