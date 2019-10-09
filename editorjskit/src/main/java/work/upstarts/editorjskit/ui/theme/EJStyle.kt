@@ -228,7 +228,8 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyViewMargins(it: Margins.MarginData, view: View) {
-        view.updatePadding(view.paddingLeft, it.marginTop, view.paddingRight, it.marginBottom)
+        view.updatePadding(view.paddingLeft, it.marginTop.dp, view.paddingRight, it.marginBottom.dp)
+       // view.updatePadding(view.paddingLeft, it.marginTop.dp, view.paddingRight, it.marginBottom.dp)
     }
 
     fun applyImageMargin(view: View, data: EJImageData) {

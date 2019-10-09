@@ -1,8 +1,12 @@
 package work.upstarts.editorjskit.ui.adapterdelegates
 
+import android.text.Html
+import android.text.Spannable
+import android.text.TextPaint
+import android.text.style.URLSpan
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import kotlinx.android.synthetic.main.item_paragraph.view.*
@@ -12,6 +16,7 @@ import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.EJBlockType
 import work.upstarts.editorjskit.models.EJRawHtmlBlock
 import work.upstarts.editorjskit.ui.theme.EJStyle
+
 
 class RawHtmlAdapterDelegate(
     private val theme: EJStyle? = null
@@ -49,7 +54,17 @@ class RawHtmlAdapterDelegate(
         fun bind(rawHtmlBlock: EJRawHtmlBlock) {
             this.rawHtmlBlock = rawHtmlBlock
             with(itemView) {
-                paragraphTv.text = rawHtmlBlock.data.html.parseAsHtml()
+                var text = Html.fromHtml(rawHtmlBlock.data.html) as Spannable
+                for (u in text.getSpans(0, text.length, URLSpan::class.java)) {
+                    text.setSpan(object : UnderlineSpan() {
+                        override fun updateDrawState(tp: TextPaint) {
+                            tp.isUnderlineText = false
+                            tp.color = resources.getColor(R.color.link_color)
+                        }
+                    }, text.getSpanStart(u), text.getSpanEnd(u), 0)
+                }
+
+                paragraphTv.text = text
             }
         }
     }
