@@ -135,6 +135,12 @@
       }
     },
     {
+      "type" : "rawTool",
+      "data" : {
+        "html" : "\uD83D\uDCAC <a href=\"viber://chat?number=79263338811\">Чат в Viber</a>"
+      }
+    },
+    {
       "type" : "table",
       "data" : {
         "content" : [

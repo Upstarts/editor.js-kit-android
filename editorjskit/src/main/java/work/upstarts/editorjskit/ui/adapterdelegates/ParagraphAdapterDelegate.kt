@@ -1,6 +1,11 @@
 package work.upstarts.editorjskit.ui.adapterdelegates
 
+import android.text.Html
+import android.text.Spannable
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.parseAsHtml
@@ -47,7 +52,17 @@ class ParagraphAdapterDelegate(
         fun bind(paragraphBlock: EJParagraphBlock) {
             this.headerBlock = paragraphBlock
             with(itemView) {
-                paragraphTv.text = paragraphBlock.data.text.parseAsHtml()
+                var text = Html.fromHtml(paragraphBlock.data.text) as Spannable
+                for (u in text.getSpans(0, text.length, URLSpan::class.java)) {
+                    text.setSpan(object : UnderlineSpan() {
+                        override fun updateDrawState(tp: TextPaint) {
+                            tp.isUnderlineText = false
+                            tp.color = resources.getColor(R.color.link_color)
+                        }
+                    }, text.getSpanStart(u), text.getSpanEnd(u), 0)
+                }
+
+                paragraphTv.text = text
                 paragraphTv.movementMethod = LinkMovementMethod()
             }
         }

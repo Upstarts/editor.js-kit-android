@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                     ResourcesCompat.getFont(this, R.font.blade)!!,
                     HeadingLevel.h3
                 )
-                .thematicBreakMargin(1, 1)
+                .thematicBreakMargin(100, 100)
                 .headingMargin(10, 10, HeadingLevel.h3)
                 .imageMargin(10, 10)
                 .paragraphMargin(10, 10)
