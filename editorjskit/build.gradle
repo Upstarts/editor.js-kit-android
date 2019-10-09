@@ -62,7 +62,7 @@ publish {
     groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit'
     artifactId = 'ejkit'
-    publishVersion = '0.0.4'
+    publishVersion = '0.0.5'
     licences = ['MIT']
     desc = 'Library that helps to work with EditorJS'
     website = 'https://github.com/Upstarts/editor.js-kit-android'
