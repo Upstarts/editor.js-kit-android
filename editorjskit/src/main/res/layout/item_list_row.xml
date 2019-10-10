@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <View
-            android:id="@+id/bulletView"
-            android:layout_width="@dimen/bullet_size"
-            android:layout_height="@dimen/bullet_size"
-            android:layout_marginTop="@dimen/bullet_top_margin"
-            android:layout_marginEnd="@dimen/bullet_right_margin"
-            android:visibility="gone"
-            android:background="@drawable/list_circle"/>
+        android:id="@+id/bulletView"
+        android:layout_width="@dimen/bullet_size"
+        android:layout_height="@dimen/bullet_size"
+        android:layout_marginTop="@dimen/bullet_top_margin"
+        android:layout_marginEnd="@dimen/bullet_right_margin"
+        android:background="@drawable/list_circle"
+        android:visibility="gone" />
 
     <TextView
-            android:id="@+id/listRowTv"
-            android:layout_width="match_parent"
-            android:tag="listRowTv"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/listRowTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:tag="listRowTv"
+        android:textSize="@dimen/paragraf_text" />
 
 </LinearLayout>

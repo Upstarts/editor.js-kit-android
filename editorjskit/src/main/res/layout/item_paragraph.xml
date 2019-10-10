@@ -7,8 +7,9 @@
 
     <TextView
         android:id="@+id/paragraphTv"
-        style="@style/ParagraphText"
+        android:textAppearance="@style/ParagraphText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/paragraf_text"
         tools:text="paragraph" />
 </FrameLayout>

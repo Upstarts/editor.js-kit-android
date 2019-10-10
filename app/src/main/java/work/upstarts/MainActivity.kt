@@ -1,6 +1,7 @@
 package work.upstarts
 
 import android.content.res.AssetManager
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,20 +22,19 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-                .headingTypeface(
+               /* .headingTypeface(
                     ResourcesCompat.getFont(this, R.font.alice)!!
-                )
+                )*/
                 .headingTypefaceDetailed(
-                    ResourcesCompat.getFont(this, R.font.blade)!!,
-                    HeadingLevel.h3
+                    Typeface.create("sans-serif-medium", Typeface.BOLD),
+                    HeadingLevel.h1
                 )
+               //  .headingFontStyleDetailed(Typeface.BOLD, HeadingLevel.h1)
                 .thematicBreakMargin(100, 100)
                 .headingMargin(10, 10, HeadingLevel.h3)
-                .imageMargin(10, 10)
                 .paragraphMargin(10, 10)
                 .rawHtmlMargin(10, 10)
                 .tableMargin(10, 10)
-                .thematicBreakColor(ContextCompat.getColor(this, R.color.delimeter_color))
                 .build()
         )
     }
