@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="textDark">#000000</color>
+    <color name="deviderColor">#6D7A95</color>
     <color name="textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
     <color name="textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
 

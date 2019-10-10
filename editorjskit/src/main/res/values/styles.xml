@@ -8,7 +8,7 @@
     </style>
 
     <style name="ParagraphText" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/textDarkSecondary</item>
+        <item name="android:textColor">@color/delimeter_color</item>
         <item name="android:textSize">32sp</item>
     </style>
 

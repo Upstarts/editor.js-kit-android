@@ -50,17 +50,15 @@ class HeaderAdapterDelegate(
         fun bind(headerBlock: EJHeaderBlock) {
             this.headerBlock = headerBlock
 
-            applyHeaderTheme(view) { theme, paint ->
-                theme.applyHeadingTextStyle(paint, headerBlock.data.level)
-            }
-
             with(itemView) {
                 headerTv.text = headerBlock.data.text
             }
 
             applyHeaderTheme(view) { theme, paint ->
+                theme.applyHeadingTextStyle(paint, headerBlock.data.level)
                 theme.applyHeadingTextSize(view.headerTv, headerBlock.data.level)
                 theme.applyHeadingMargin(view, headerBlock.data.level)
+                theme.applyFontStyle(view.headerTv, headerBlock.data.level)
             }
         }
     }

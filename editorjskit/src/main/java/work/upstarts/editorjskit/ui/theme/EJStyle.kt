@@ -55,7 +55,8 @@ open class EJStyle protected constructor(builder: Builder) {
     // by default, whatever typeface is set on the TextView
     protected val headingTypeface: Typeface? = builder.headingTypeface
 
-    protected val headingTypefaceMap: HashMap<Int, Typeface>? = builder.headingTypefaceMap
+    protected val headingTypefaceMap: HashMap<Int, Typeface> = builder.headingTypefaceMap
+    protected val headingFontStyleMap: HashMap<Int, Int> = builder.headingFontStyleMap
 
     // by default, use standard values (see HEADING_SIZES for values).
     // this library supports 6 heading sizes, so make sure the array you pass here has 6 elements.
@@ -145,10 +146,10 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyHeadingTextStyle(paint: Paint, headerLevel: Int) {
-        if (!headingTypefaceMap.isNullOrEmpty()) {
+        if (headingTypefaceMap[headerLevel]!=null) {
             paint.typeface = headingTypefaceMap[headerLevel]
         } else {
-            if (headingTypeface == null && headingTypefaceMap.isNullOrEmpty()) {
+            if (headingTypeface == null) {
                 paint.isFakeBoldText = true
             } else {
                 paint.typeface = headingTypeface
@@ -229,7 +230,6 @@ open class EJStyle protected constructor(builder: Builder) {
 
     fun applyViewMargins(it: Margins.MarginData, view: View) {
         view.updatePadding(view.paddingLeft, it.marginTop.dp, view.paddingRight, it.marginBottom.dp)
-       // view.updatePadding(view.paddingLeft, it.marginTop.dp, view.paddingRight, it.marginBottom.dp)
     }
 
     fun applyImageMargin(view: View, data: EJImageData) {
@@ -248,6 +248,10 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
+    fun applyFontStyle(headerTv: HeaderTextView, level: Int) {
+        headingFontStyleMap[level]?.let { headerTv.setTypeface(headerTv.typeface, it)}
+    }
+
     class Builder {
         var margins = Margins()
         var linkColor: Int = 0
@@ -259,7 +263,8 @@ open class EJStyle protected constructor(builder: Builder) {
         var paragraphBackgroundColor: Int = 0
         var paragraphTypeface: Typeface? = null
         var paragraphBlockTypeface: Typeface? = null
-        val headingTypefaceMap: HashMap<Int, Typeface>? = HashMap()
+        val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
+        val headingFontStyleMap: HashMap<Int, Int> = HashMap()
         var paragraphTextSize: Int = 0
         var headingTypeface: Typeface? = null
         var headingTextSizes: FloatArray? = null
@@ -426,6 +431,11 @@ open class EJStyle protected constructor(builder: Builder) {
             this.margins.setTableMargin(marginTop, marginBottom)
             return this
         }
+
+        fun headingFontStyleDetailed(style: Int, level: HeadingLevel): Builder {
+            this.headingFontStyleMap?.put(level.value, style)
+            return this
+        }
     }
 
     companion object {
@@ -479,7 +489,7 @@ open class EJStyle protected constructor(builder: Builder) {
             }
         }
 
-        private val HEADING_SIZES = floatArrayOf(32f, 24f, 18f, 16f, 14f, 12f)
+        private val HEADING_SIZES = floatArrayOf(22f, 20f, 17f, 16f, 14f, 12f)
         private val HEADING_TOP_MARGINS_DEFAULT = intArrayOf(24, 32, 32, 14, 12, 8)
     }
 
