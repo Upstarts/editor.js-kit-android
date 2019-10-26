@@ -39,8 +39,7 @@ class ParagraphAdapterDelegate(
 
         theme?.let {
             view.apply {
-                it.applyParagraphTextStyle(this)
-                it.applyParagraphMargin(this, 16)
+                it.applyParagraphStyle(this, DEFAULT_MARGIN_PARAGRAF)
             }
         }
         return ViewHolder(view)
@@ -68,3 +67,5 @@ class ParagraphAdapterDelegate(
         }
     }
 }
+
+const val DEFAULT_MARGIN_PARAGRAF = 16

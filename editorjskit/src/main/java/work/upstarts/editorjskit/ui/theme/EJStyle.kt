@@ -13,6 +13,8 @@ import androidx.annotation.IntRange
 import androidx.core.view.setPadding
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import kotlinx.android.synthetic.main.item_header.view.*
+import kotlinx.android.synthetic.main.item_image.view.*
 import kotlinx.android.synthetic.main.item_paragraph.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.dp
@@ -43,6 +45,9 @@ open class EJStyle protected constructor(builder: Builder) {
     // by default - main text color
     protected val paragraphTextColor: Int = builder.paragraphTextColor
 
+
+    protected val headingTextColor: Int = builder.headingTextColor
+
     protected val paragraphBackgroundColor: Int = builder.paragraphBackgroundColor
 
     // by default Typeface.MONOSPACE
@@ -57,6 +62,7 @@ open class EJStyle protected constructor(builder: Builder) {
 
     protected val headingTypefaceMap: HashMap<Int, Typeface> = builder.headingTypefaceMap
     protected val headingFontStyleMap: HashMap<Int, Int> = builder.headingFontStyleMap
+    protected val headingColorsMap: HashMap<Int, Int> = builder.headingColorsMap
 
     // by default, use standard values (see HEADING_SIZES for values).
     // this library supports 6 heading sizes, so make sure the array you pass here has 6 elements.
@@ -101,6 +107,11 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
+    fun applyParagraphStyle(baseView: View, margin: Int) {
+        applyParagraphTextStyle(baseView)
+        applyParagraphMargin(baseView, margin)
+    }
+
     fun applyParagraphTextStyle(baseView: View) {
         if (paragraphTextColor != 0) {
             baseView.paragraphTv.setTextColor(paragraphTextColor)
@@ -122,7 +133,7 @@ open class EJStyle protected constructor(builder: Builder) {
 
     fun applyParagraphMargin(view: View, defaulMargin: Int) {
         val margins = margins.paragraphMargin
-        if (margins!=null) {
+        if (margins != null) {
             applyViewMargins(margins, view)
         } else {
             view.updatePadding(
@@ -134,7 +145,6 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
-
     private fun applyBlockPadding(textView: TextView) {
         textView.setPadding(blockPadding)
     }
@@ -145,8 +155,17 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
-    fun applyHeadingTextStyle(paint: Paint, headerLevel: Int) {
-        if (headingTypefaceMap[headerLevel]!=null) {
+
+    fun applyHeadingStyle(view: View, paint: Paint, @IntRange(from = 1, to = 6) level: Int) {
+        applyHeadingTextStyle(paint, level)
+        applyHeadingTextSize(view.headerTv, level)
+        applyHeadingMargin(view, level)
+        applyFontStyle(view.headerTv, level)
+        applyHeadingTextColor(view.headerTv, level)
+    }
+
+    private fun applyHeadingTextStyle(paint: Paint, headerLevel: Int) {
+        if (headingTypefaceMap[headerLevel] != null) {
             paint.typeface = headingTypefaceMap[headerLevel]
         } else {
             if (headingTypeface == null) {
@@ -154,6 +173,15 @@ open class EJStyle protected constructor(builder: Builder) {
             } else {
                 paint.typeface = headingTypeface
             }
+        }
+    }
+
+    fun applyHeadingTextColor(headerTv: HeaderTextView, @IntRange(from = 1, to = 6) level: Int) {
+        if (headingTextColor != 0) {
+            headerTv.setTextColor(headingTextColor)
+        }
+        headingColorsMap[level].let {
+            it?.let { it1 -> headerTv.setTextColor(it1) }
         }
     }
 
@@ -195,7 +223,7 @@ open class EJStyle protected constructor(builder: Builder) {
                 String.format(
                     Locale.US,
                     "Supplied heading level: %d is invalid, where configured heading sizes are: `%s`",
-                    level, Arrays.toString(marginSizes)
+                    level, marginSizes.contentToString()
                 )
             )
         }
@@ -206,19 +234,34 @@ open class EJStyle protected constructor(builder: Builder) {
             view.updatePadding(view.paddingLeft, 32.dp, view.paddingRight, view.paddingBottom)
     }
 
-    fun applyThematicBreakStyle(dividerView: TextView) {
+    fun applyDividerStyle(dividerView: TextView) {
+        applyDelimiterColor(dividerView)
+        applyDelimiterHeight(dividerView)
+        applyDelimiterMargins(dividerView)
+    }
+
+    private fun applyDelimiterColor(dividerView: TextView) {
         if (delimiterColor != 0) {
             dividerView.background = ColorDrawable(delimiterColor)
         }
+    }
 
-        if (delimiterHeight >= 0) {
-            dividerView.updateLayoutParams<FrameLayout.LayoutParams> {
-                height = delimiterHeight
-            }
+    fun applyDelimiterHeight(dividerView: TextView) {
+        dividerView.updateLayoutParams<FrameLayout.LayoutParams> {
+            height = delimiterHeight
         }
     }
 
-    fun applyImageStyle(imageView: ImageView, data: EJImageData) {
+    fun applyDelimiterMargins(dividerView: TextView) {
+        margins.deviderMargin?.let { applyViewMargins(it, dividerView) }
+    }
+
+    fun applyImageStyle(view: View, data: EJImageData) {
+        applyImageRes(view.imageView, data)
+        applyImageMargin(view, data)
+    }
+
+    fun applyImageRes(imageView: ImageView, data: EJImageData) {
         if (imageBackground != 0 && data.withBackground) {
             imageView.background = imageView.context.getDrawable(imageBackground)
         }
@@ -234,27 +277,28 @@ open class EJStyle protected constructor(builder: Builder) {
 
     fun applyImageMargin(view: View, data: EJImageData) {
         val margins = margins.imageMargin
-        if (margins!= null) {
+        if (margins != null) {
             applyViewMargins(margins, view)
-        }  else {
+        } else {
             applyDefaultImageMargin(view, data)
         }
     }
 
     fun applyListMargin(view: View) {
         val margins = margins.listMargin
-        if (margins!= null) {
+        if (margins != null) {
             applyViewMargins(margins, view)
         }
     }
 
     fun applyFontStyle(headerTv: HeaderTextView, level: Int) {
-        headingFontStyleMap[level]?.let { headerTv.setTypeface(headerTv.typeface, it)}
+        headingFontStyleMap[level]?.let { headerTv.setTypeface(headerTv.typeface, it) }
     }
 
     class Builder {
         var margins = Margins()
         var linkColor: Int = 0
+        var headingTextColor: Int = 0
         var blockMargin: Int = 0
         var listItemColor: Int = 0
         var listBulletColor: Int = 0
@@ -265,18 +309,19 @@ open class EJStyle protected constructor(builder: Builder) {
         var paragraphBlockTypeface: Typeface? = null
         val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
         val headingFontStyleMap: HashMap<Int, Int> = HashMap()
+        val headingColorsMap: HashMap<Int, Int> = HashMap()
         var paragraphTextSize: Int = 0
         var headingTypeface: Typeface? = null
         var headingTextSizes: FloatArray? = null
         var headingTextMargins: IntArray? = null
         var delimiterColor: Int = 0
-        var delimiterBreakHeight = -1
+        var delimiterBreakHeight = 1
         var tableColumnDrawableRes: Int = 0
         var tableColumnTextColor: Int = 0
         var imageBackground: Int = 0
         var imageBorder: Int = 0
 
-        internal constructor() {}
+        internal constructor()
 
         internal constructor(theme: EJStyle) {
             this.linkColor = theme.linkColor
@@ -296,6 +341,7 @@ open class EJStyle protected constructor(builder: Builder) {
             this.tableColumnTextColor = theme.tableColumnTextColor
             this.imageBackground = theme.imageBackground
             this.imageBorder = theme.imageBorder
+            this.headingTextColor = theme.headingTextColor
         }
 
         fun linkColor(@ColorInt linkColor: Int): Builder {
@@ -379,6 +425,11 @@ open class EJStyle protected constructor(builder: Builder) {
             return this
         }
 
+        fun headingColorDetailed(color: Int, level: HeadingLevel): Builder {
+            this.headingColorsMap?.put(level.value, color)
+            return this
+        }
+
         /**
          * @param headingTextSizes an array of multipliers values for heading elements.
          * The base value for this multipliers is TextView\'s text size
@@ -388,12 +439,12 @@ open class EJStyle protected constructor(builder: Builder) {
             return this
         }
 
-        fun thematicBreakColor(@ColorInt thematicBreakColor: Int): Builder {
+        fun dividerBreakColor(@ColorInt thematicBreakColor: Int): Builder {
             this.delimiterColor = thematicBreakColor
             return this
         }
 
-        fun thematicBreakHeight(@Px thematicBreakHeight: Int): Builder {
+        fun dividerBreakHeight(thematicBreakHeight: Int): Builder {
             this.delimiterBreakHeight = thematicBreakHeight
             return this
         }
@@ -402,7 +453,7 @@ open class EJStyle protected constructor(builder: Builder) {
             return EJStyle(this)
         }
 
-        fun thematicBreakMargin(marginTop: Int, marginBottom: Int): Builder {
+        fun dividerMargin(marginTop: Int, marginBottom: Int): Builder {
             this.margins.setDeviderMargin(marginTop, marginBottom)
             return this
         }
@@ -492,5 +543,4 @@ open class EJStyle protected constructor(builder: Builder) {
         private val HEADING_SIZES = floatArrayOf(22f, 20f, 17f, 16f, 14f, 12f)
         private val HEADING_TOP_MARGINS_DEFAULT = intArrayOf(24, 32, 32, 14, 12, 8)
     }
-
 }

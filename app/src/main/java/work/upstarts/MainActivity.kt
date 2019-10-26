@@ -1,10 +1,10 @@
 package work.upstarts
 
+import android.annotation.SuppressLint
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
@@ -22,19 +22,9 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-               /* .headingTypeface(
-                    ResourcesCompat.getFont(this, R.font.alice)!!
-                )*/
-                .headingTypefaceDetailed(
-                    Typeface.create("sans-serif-medium", Typeface.BOLD),
-                    HeadingLevel.h1
-                )
-               //  .headingFontStyleDetailed(Typeface.BOLD, HeadingLevel.h1)
-                .thematicBreakMargin(100, 100)
-                .headingMargin(10, 10, HeadingLevel.h3)
-                .paragraphMargin(10, 10)
-                .rawHtmlMargin(10, 10)
-                .tableMargin(10, 10)
+                .dividerBreakColor(resources.getColor(R.color.delimeter_color))
+                .dividerMargin(50, 50)
+                .imageBorderRes(R.drawable.image_background)
                 .build()
         )
     }

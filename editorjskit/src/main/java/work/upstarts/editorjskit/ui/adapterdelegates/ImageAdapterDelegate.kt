@@ -39,8 +39,7 @@ class ImageAdapterDelegate(
             this.imageBlock = paragraphBlock
             with(itemView) {
                 val data = paragraphBlock.data
-                theme?.applyImageStyle(imageView, data)
-                theme?.applyImageMargin(this, data)
+                theme?.applyImageStyle(this, data)
                 imageView.loadImage(data.file.url, data)
                 val caption = data.caption
                     if (caption!=null&&caption.isNotEmpty()) {

@@ -8,5 +8,6 @@
     <color name="table_background_color">#eee</color>
     <color name="table_divider_color">#AFAFAF</color>
     <color name="delimeter_color">#FF00FF</color>
+    <color name="my_custom_text_color">#F0FF</color>
     <color name="link_color">#258FFB</color>
 </resources>

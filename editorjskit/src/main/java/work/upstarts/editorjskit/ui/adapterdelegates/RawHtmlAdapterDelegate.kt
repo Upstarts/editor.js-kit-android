@@ -39,8 +39,7 @@ class RawHtmlAdapterDelegate(
 
         theme?.let {
             view.paragraphTv.apply {
-                it.applyParagraphTextStyle(this)
-                it.applyParagraphMargin(this, 16)
+                it.applyParagraphStyle(this, DEFAULT_MARGIN_HTML)
             }
         }
 
@@ -63,9 +62,10 @@ class RawHtmlAdapterDelegate(
                         }
                     }, text.getSpanStart(u), text.getSpanEnd(u), 0)
                 }
-
                 paragraphTv.text = text
             }
         }
     }
 }
+
+const val DEFAULT_MARGIN_HTML = 16

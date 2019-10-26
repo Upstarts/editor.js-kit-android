@@ -104,40 +104,16 @@
         "file" : {
           "url" : "https://vesort.ru/wa-data/public/photos/70/00/70/70.1500x0.jpg"
         },
-        "caption" : "",
+        "caption" : "Here could be some caption for this picture",
         "withBorder" : false,
         "stretched" : true,
         "withBackground" : true
-      }
-    },
-    {
-      "type" : "image",
-      "data" : {
-        "file" : {
-          "url" : "https://vesort.ru/wa-data/public/shop/products/38/01/138/images/48/48.970x0.jpg"
-        },
-        "caption" : "ghjfghjfghjgh",
-        "withBorder" : false,
-        "stretched" : true,
-        "withBackground" : true
-      }
-    },
-    {
-      "type" : "code",
-      "data" : {
-        "code" : "sdfgsf"
       }
     },
     {
       "type" : "rawTool",
       "data" : {
         "html" : "<h1>Header</h1>\n  <!-- Комментарий -->\n  <p>First paragraph.</p>\n  <p>Second paragraph.</p>"
-      }
-    },
-    {
-      "type" : "rawTool",
-      "data" : {
-        "html" : "\uD83D\uDCAC <a href=\"viber://chat?number=79263338811\">Чат в Viber</a>"
       }
     },
     {
