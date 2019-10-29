@@ -180,8 +180,8 @@ open class EJStyle protected constructor(builder: Builder) {
         if (headingTextColor != 0) {
             headerTv.setTextColor(headingTextColor)
         }
-        headingColorsMap[level].let {
-            it?.let { it1 -> headerTv.setTextColor(it1) }
+        headingColorsMap[level]?.let {
+            it.let { it1 -> headerTv.setTextColor(it1) }
         }
     }
 
