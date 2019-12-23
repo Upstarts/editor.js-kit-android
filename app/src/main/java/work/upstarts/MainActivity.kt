@@ -5,6 +5,7 @@ import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
+                .linkColor(resources.getColor(R.color.delimeter_color))
                 .dividerMargin(50, 50)
                 .imageBorderRes(R.drawable.image_background)
                 .build()
