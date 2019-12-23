@@ -61,7 +61,7 @@
     {
       "type" : "paragraph",
       "data" : {
-        "text" : "Classic WYSIWYG-editors produce raw HTML-markup with both content data and content appearance. On the contrary, Editor.js outputs JSON object with data of each Block. You can see an example below"
+        "text" : "Classic WYSIWYG-editors produce raw HTML-markup with both content data and content appearance. On the contrary, <a href=\"https://github.com/editor-js\">Editor.js</a> outputs JSON object with data of each Block. You can see an example below"
       }
     },
     {

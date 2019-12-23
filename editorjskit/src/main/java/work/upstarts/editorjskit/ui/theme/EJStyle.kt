@@ -30,7 +30,7 @@ import kotlin.collections.HashMap
  */
 open class EJStyle protected constructor(builder: Builder) {
 
-    protected val linkColor: Int = builder.linkColor
+    val linkColor: Int? = builder.linkColor
 
     // used in quote, lists
     val blockPadding: Int = builder.blockMargin
@@ -79,12 +79,6 @@ open class EJStyle protected constructor(builder: Builder) {
     protected val imageBackground: Int = builder.imageBackground
     protected val imageBorder: Int = builder.imageBorder
 
-    private fun applyLinkStyle(tv: TextView) {
-        if (linkColor != 0) {
-            tv.setLinkTextColor(linkColor)
-        }
-    }
-
     fun applyTableColumnBackground(view: TextView) {
         if (tableColumnDrawableRes != 0) {
             view.background = view.context.getDrawable(tableColumnDrawableRes)
@@ -124,7 +118,7 @@ open class EJStyle protected constructor(builder: Builder) {
         if (paragraphTextSize > 0) {
             baseView.paragraphTv.textSize = paragraphTextSize.toFloat()
         }
-        applyLinkStyle(baseView.paragraphTv)
+
         applyBackgroundColor(baseView.paragraphTv)
 
 
@@ -297,7 +291,7 @@ open class EJStyle protected constructor(builder: Builder) {
 
     class Builder {
         var margins = Margins()
-        var linkColor: Int = 0
+        var linkColor: Int? = null
         var headingTextColor: Int = 0
         var blockMargin: Int = 0
         var listItemColor: Int = 0

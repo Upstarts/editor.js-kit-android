@@ -56,7 +56,7 @@ class ParagraphAdapterDelegate(
                     text.setSpan(object : UnderlineSpan() {
                         override fun updateDrawState(tp: TextPaint) {
                             tp.isUnderlineText = false
-                            tp.color = resources.getColor(R.color.link_color)
+                            tp.color = theme?.linkColor ?: resources.getColor(R.color.link_color)
                         }
                     }, text.getSpanStart(u), text.getSpanEnd(u), 0)
                 }
