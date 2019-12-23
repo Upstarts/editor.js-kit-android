@@ -175,9 +175,8 @@ open class EJStyle protected constructor(builder: Builder) {
             headerTv.setTextColor(headingTextColor)
         }
         headingColorsMap[level]?.let {
-            it.let { it1 -> headerTv.setTextColor(it1) }
+             headerTv.setTextColor(it) }
         }
-    }
 
     fun applyHeadingTextSize(headerTv: HeaderTextView, @IntRange(from = 1, to = 6) level: Int) {
         val textSizes = headingTextSizeMultipliers ?: HEADING_SIZES
