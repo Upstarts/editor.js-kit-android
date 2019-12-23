@@ -23,9 +23,8 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-                .linkColor(resources.getColor(R.color.delimeter_color))
-                .dividerMargin(50, 50)
-                .imageBorderRes(R.drawable.image_background)
+                .linkColor(ContextCompat.getColor(this,R.color.link_color))
+                .dividerBreakHeight(10)
                 .build()
         )
     }
