@@ -299,7 +299,6 @@ open class EJStyle protected constructor(builder: Builder) {
         var paragraphTextColor: Int = 0
         var paragraphBackgroundColor: Int = 0
         var paragraphTypeface: Typeface? = null
-        var paragraphBlockTypeface: Typeface? = null
         val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
         val headingFontStyleMap: HashMap<Int, Int> = HashMap()
         val headingColorsMap: HashMap<Int, Int> = HashMap()
@@ -397,12 +396,7 @@ open class EJStyle protected constructor(builder: Builder) {
             this.paragraphTypeface = paragraphTypeface
             return this
         }
-
-        fun paragraphBlockTypeface(typeface: Typeface): Builder {
-            this.paragraphBlockTypeface = typeface
-            return this
-        }
-
+        
         fun paragraphTextSize(@Px paragraphTextSize: Int): Builder {
             this.paragraphTextSize = paragraphTextSize
             return this
