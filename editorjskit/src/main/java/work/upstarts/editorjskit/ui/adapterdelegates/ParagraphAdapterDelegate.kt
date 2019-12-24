@@ -39,8 +39,7 @@ class ParagraphAdapterDelegate(
 
         theme?.let {
             view.apply {
-                it.applyParagraphTextStyle(this)
-                it.applyParagraphMargin(this, 16)
+                it.applyParagraphStyle(this, DEFAULT_MARGIN_PARAGRAF)
             }
         }
         return ViewHolder(view)
@@ -57,7 +56,7 @@ class ParagraphAdapterDelegate(
                     text.setSpan(object : UnderlineSpan() {
                         override fun updateDrawState(tp: TextPaint) {
                             tp.isUnderlineText = false
-                            tp.color = resources.getColor(R.color.link_color)
+                            tp.color = theme?.linkColor ?: resources.getColor(R.color.link_color)
                         }
                     }, text.getSpanStart(u), text.getSpanEnd(u), 0)
                 }
@@ -68,3 +67,5 @@ class ParagraphAdapterDelegate(
         }
     }
 }
+
+const val DEFAULT_MARGIN_PARAGRAF = 16

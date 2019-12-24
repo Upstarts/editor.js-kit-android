@@ -39,8 +39,7 @@ class RawHtmlAdapterDelegate(
 
         theme?.let {
             view.paragraphTv.apply {
-                it.applyParagraphTextStyle(this)
-                it.applyParagraphMargin(this, 16)
+                it.applyParagraphStyle(this, DEFAULT_MARGIN_HTML)
             }
         }
 
@@ -59,13 +58,15 @@ class RawHtmlAdapterDelegate(
                     text.setSpan(object : UnderlineSpan() {
                         override fun updateDrawState(tp: TextPaint) {
                             tp.isUnderlineText = false
-                            tp.color = resources.getColor(R.color.link_color)
+                            tp.color = theme?.linkColor ?: resources.getColor(R.color.link_color)
                         }
                     }, text.getSpanStart(u), text.getSpanEnd(u), 0)
                 }
-
                 paragraphTv.text = text
             }
+
         }
     }
 }
+
+const val DEFAULT_MARGIN_HTML = 16

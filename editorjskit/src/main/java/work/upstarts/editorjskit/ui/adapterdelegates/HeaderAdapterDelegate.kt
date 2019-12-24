@@ -55,10 +55,7 @@ class HeaderAdapterDelegate(
             }
 
             applyHeaderTheme(view) { theme, paint ->
-                theme.applyHeadingTextStyle(paint, headerBlock.data.level)
-                theme.applyHeadingTextSize(view.headerTv, headerBlock.data.level)
-                theme.applyHeadingMargin(view, headerBlock.data.level)
-                theme.applyFontStyle(view.headerTv, headerBlock.data.level)
+                theme.applyHeadingStyle(view, paint, headerBlock.data.level)
             }
         }
     }

@@ -55,26 +55,34 @@ compile 'com.github.upstarts:ejkit:X.X.X' - look at badge above for latest versi
 ## Customizing
 You can set style globally via `EJKit.style = ...` for all adapters, or pass `EJStyle` instance for specific adapter.
 ```
-EJKit.ejStyle = EJStyle.emptyBuilder()
-            .bulletDrawableRes(R.drawable.list_circle) // used for unordered list
-            .tableColumnDrawableRes(R.drawable.table_content_cell_bg) // table column background
-            .imageBackgroundRes(R.drawable.image_background) // background for Image block
-            .linkColor(getColor(R.color.colorPrimary))
-            .blockMargin(resources.getDimensionPixelSize(R.dimen.padding_small)) //used as padding for Paragraph and Raw Html blocks
-            .listItemColor(getColor(R.color.colorPrimary))
-            .listBulletColor(getColor(R.color.colorPrimary))
-            .imageBorderRes(R.drawable.image_background)
-            .tableColumnTextColor(getColor(R.color.colorPrimary))
-            .paragraphTextColor(getColor(R.color.colorPrimary))
-            .paragraphBackgroundColor(getColor(R.color.colorPrimary))
-            .paragraphTypeface(ResourcesCompat.getFont(this, R.font.alice)!!)
-            .paragraphTextSize(resources.getDimensionPixelSize(R.dimen.default_font_size))
-            .headingTypeface(ResourcesCompat.getFont(this, R.font.alice)!!)
-            .headingTypefaceDetailed(ResourcesCompat.getFont(this, R.font.blade)!!, HeadingLevel.h3) 
-            .headingTextSizes(floatArrayOf(32f, 24f, 18f, 16f, 14f, 12f)) // sizes used by default for headers
-            .thematicBreakColor(getColor(R.color.colorPrimary)) // delimeter color
-            .thematicBreakHeight(resources.getDimensionPixelSize(R.dimen.delimiter_height)) //delimiter height
-            .build()
+ EJStyle.builderWithDefaults(applicationContext)
+                .linkColor(ContextCompat.getColor(this,R.color.default_color))
+                .blockMargin(10)
+                .dividerMargin(10, 10)
+                .headingMargin(10, 10, HeadingLevel.h1)
+                .imageMargin(10, 10)
+                .paragraphMargin(10, 10)
+                .rawHtmlMargin(10, 10)
+                .tableMargin(10, 10)
+                .listItemColor(ContextCompat.getColor(this,R.color.default_color))
+                .listBulletColor(ContextCompat.getColor(this,R.color.default_color))
+                .bulletDrawableRes(R.drawable.list_circle)
+                .paragraphTextColor(ContextCompat.getColor(this,R.color.default_color))
+                .paragraphBackgroundColor(ContextCompat.getColor(this,R.color.default_color))
+                .paragraphTypeface(ResourcesCompat.getFont(this, R.font.my_font)!!)
+                .paragraphTextColor(ContextCompat.getColor(this,R.color.default_color))
+                .headingTypeface(ResourcesCompat.getFont(this, R.font.my_font)!!)
+                .headingTypefaceDetailed(ResourcesCompat.getFont(this, R.font.my_font)!!, HeadingLevel.h1)
+                .headingFontStyleDetailed(R.style.ParagraphText, HeadingLevel.h1)
+                .headingColorDetailed(R.color.default_color, HeadingLevel.h1)
+                .headingTextSizes(floatArrayOf( 12f, 12f, 12f,12f,12f,12f))
+                .dividerBreakColor(ContextCompat.getColor(this,R.color.default_color))
+                .dividerBreakHeight(10)
+                .tableColumnDrawableRes(R.drawable.table_content_cell_bg)
+                .tableColumnTextColor(ContextCompat.getColor(this,R.color.default_color))
+                .imageBackgroundRes(R.drawable.image_background)
+                .imageBorderRes(R.drawable.image_background)
+                .build()
 ```
 
 ### Override android style in styles.xml

@@ -1,5 +1,6 @@
 package work.upstarts
 
+import android.annotation.SuppressLint
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.os.Bundle
@@ -22,19 +23,8 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-               /* .headingTypeface(
-                    ResourcesCompat.getFont(this, R.font.alice)!!
-                )*/
-                .headingTypefaceDetailed(
-                    Typeface.create("sans-serif-medium", Typeface.BOLD),
-                    HeadingLevel.h1
-                )
-               //  .headingFontStyleDetailed(Typeface.BOLD, HeadingLevel.h1)
-                .thematicBreakMargin(100, 100)
-                .headingMargin(10, 10, HeadingLevel.h3)
-                .paragraphMargin(10, 10)
-                .rawHtmlMargin(10, 10)
-                .tableMargin(10, 10)
+                .linkColor(ContextCompat.getColor(this,R.color.link_color))
+                .dividerBreakHeight(10)
                 .build()
         )
     }
