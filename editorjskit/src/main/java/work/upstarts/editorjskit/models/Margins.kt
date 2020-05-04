@@ -1,11 +1,9 @@
 package work.upstarts.editorjskit.models
 
-import android.graphics.Typeface
-
 class Margins {
 
-     var deviderMargin: MarginData? = null
-     val headerMargin: HashMap<Int, MarginData>? = HashMap()
+    var deviderMargin: MarginData? = null
+    val headerMargin: HashMap<Int, MarginData>? = HashMap()
     var imageMargin: MarginData? = null
     var listMargin: MarginData? = null
     var paragraphMargin: MarginData? = null
@@ -14,31 +12,31 @@ class Margins {
 
     data class MarginData(val marginTop: Int, val marginBottom: Int)
 
-    fun setHeaderMargin (marginTop: Int, marginBottom: Int, headerType: HeadingLevel) {
+    fun setHeaderMargin(marginTop: Int, marginBottom: Int, headerType: HeadingLevel) {
         headerMargin?.set(headerType.value, MarginData(marginTop, marginBottom))
     }
 
-    fun setParagraphMargin (marginTop: Int, marginBottom: Int) {
+    fun setParagraphMargin(marginTop: Int, marginBottom: Int) {
         paragraphMargin = MarginData(marginTop, marginBottom)
     }
 
-    fun setImageMargin (marginTop: Int, marginBottom: Int) {
+    fun setImageMargin(marginTop: Int, marginBottom: Int) {
         imageMargin = MarginData(marginTop, marginBottom)
     }
 
-    fun setListMargin (marginTop: Int, marginBottom: Int) {
+    fun setListMargin(marginTop: Int, marginBottom: Int) {
         listMargin = MarginData(marginTop, marginBottom)
     }
 
-    fun setHtmlMargin (marginTop: Int, marginBottom: Int) {
+    fun setHtmlMargin(marginTop: Int, marginBottom: Int) {
         rawHtmlMargin = MarginData(marginTop, marginBottom)
     }
 
-    fun setTableMargin (marginTop: Int, marginBottom: Int) {
+    fun setTableMargin(marginTop: Int, marginBottom: Int) {
         tableMargin = MarginData(marginTop, marginBottom)
     }
 
-    fun setDeviderMargin (marginTop: Int, marginBottom: Int) {
+    fun setDeviderMargin(marginTop: Int, marginBottom: Int) {
         deviderMargin = MarginData(marginTop, marginBottom)
     }
 }

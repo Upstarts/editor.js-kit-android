@@ -29,7 +29,8 @@ Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json)
 
 ```
 maven { url "https://dl.bintray.com/heckslam/EditorJSKit" }
-compile 'com.github.upstarts:ejkit:X.X.X' - look at badge above for latest version
+implementation 'com.github.upstarts:ejkit:X.X.X' - look at badge above for latest version
+implementation 'com.github.upstarts:ejkit-gson:X.X.X' - adds GSON adapter. If you use other library for parsing json, you need to write adapter yourself.
 ```
 
 ## Setup
