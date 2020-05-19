@@ -56,7 +56,7 @@ publish {
     groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit-Gson'
     artifactId = 'ejkit-gson'
-    publishVersion = '0.0.8'
+    publishVersion = '0.0.9'
     licences = ['MIT']
     desc = 'Module adds gson adapter for EditorJS library'
     website = 'https://github.com/Upstarts/editor.js-kit-android'

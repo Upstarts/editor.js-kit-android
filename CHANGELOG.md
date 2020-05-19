@@ -1,5 +1,10 @@
 Change Log
 ==========
+## Version 0.0.9
+
+_2020-05-19_
+
+* Fix clicking on hyperlinks
 
 ## Version 0.0.8
 

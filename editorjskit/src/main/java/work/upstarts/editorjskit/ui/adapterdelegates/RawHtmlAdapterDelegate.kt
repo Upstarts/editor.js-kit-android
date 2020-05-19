@@ -1,17 +1,15 @@
 package work.upstarts.editorjskit.ui.adapterdelegates
 
-import android.text.Html
 import android.text.Spannable
-import android.text.TextPaint
-import android.text.style.URLSpan
-import android.text.style.UnderlineSpan
+import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import kotlinx.android.synthetic.main.item_paragraph.view.*
 import work.upstarts.editorjskit.R
+import work.upstarts.editorjskit.environment.applyThemeForUrlSpans
 import work.upstarts.editorjskit.environment.inflate
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.EJBlockType
@@ -53,19 +51,11 @@ class RawHtmlAdapterDelegate(
         fun bind(rawHtmlBlock: EJRawHtmlBlock) {
             this.rawHtmlBlock = rawHtmlBlock
             with(itemView) {
-                val text = Html.fromHtml(rawHtmlBlock.data.html) as Spannable
-                for (u in text.getSpans(0, text.length, URLSpan::class.java)) {
-                    text.setSpan(object : UnderlineSpan() {
-                        override fun updateDrawState(tp: TextPaint) {
-                            tp.isUnderlineText = false
-                            tp.color = theme?.linkColor ?:
-                                    ContextCompat.getColor(context, R.color.link_color)
-                        }
-                    }, text.getSpanStart(u), text.getSpanEnd(u), 0)
-                }
+                val text = rawHtmlBlock.data.html.parseAsHtml() as Spannable
+                text.applyThemeForUrlSpans(theme, context)
                 paragraphTv.text = text
+                paragraphTv.movementMethod = LinkMovementMethod.getInstance()
             }
-
         }
     }
 }
