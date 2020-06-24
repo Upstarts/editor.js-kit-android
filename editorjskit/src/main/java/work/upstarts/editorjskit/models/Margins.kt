@@ -12,33 +12,33 @@ class Margins {
     var rawHtmlMargin: MarginData? = null
     var tableMargin: MarginData? = null
 
-    data class MarginData(val marginTop: Int, val marginBottom: Int)
+    data class MarginData(val marginLeft: Int, val marginTop: Int, val marginRight: Int, val marginBottom: Int)
 
-    fun setHeaderMargin (marginTop: Int, marginBottom: Int, headerType: HeadingLevel) {
-        headerMargin?.set(headerType.value, MarginData(marginTop, marginBottom))
+    fun setHeaderMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int, headerType: HeadingLevel) {
+        headerMargin?.set(headerType.value, MarginData(marginLeft, marginTop, marginRight, marginBottom))
     }
 
-    fun setParagraphMargin (marginTop: Int, marginBottom: Int) {
-        paragraphMargin = MarginData(marginTop, marginBottom)
+    fun setParagraphMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        paragraphMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
-    fun setImageMargin (marginTop: Int, marginBottom: Int) {
-        imageMargin = MarginData(marginTop, marginBottom)
+    fun setImageMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        imageMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
-    fun setListMargin (marginTop: Int, marginBottom: Int) {
-        listMargin = MarginData(marginTop, marginBottom)
+    fun setListMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        listMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
-    fun setHtmlMargin (marginTop: Int, marginBottom: Int) {
-        rawHtmlMargin = MarginData(marginTop, marginBottom)
+    fun setHtmlMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        rawHtmlMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
-    fun setTableMargin (marginTop: Int, marginBottom: Int) {
-        tableMargin = MarginData(marginTop, marginBottom)
+    fun setTableMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        tableMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
-    fun setDeviderMargin (marginTop: Int, marginBottom: Int) {
-        deviderMargin = MarginData(marginTop, marginBottom)
+    fun setDeviderMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        deviderMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 }

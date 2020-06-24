@@ -125,7 +125,7 @@ open class EJStyle protected constructor(builder: Builder) {
         applyBlockPadding(baseView.paragraphTv)
     }
 
-    fun applyParagraphMargin(view: View, defaulMargin: Int) {
+    private fun applyParagraphMargin(view: View, defaulMargin: Int) {
         val margins = margins.paragraphMargin
         if (margins != null) {
             applyViewMargins(margins, view)
@@ -265,7 +265,7 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyViewMargins(it: Margins.MarginData, view: View) {
-        view.updatePadding(view.paddingLeft, it.marginTop.dp, view.paddingRight, it.marginBottom.dp)
+        view.updatePadding(it.marginLeft.dp, it.marginTop.dp, it.marginRight.dp, it.marginBottom.dp)
     }
 
     fun applyImageMargin(view: View, data: EJImageData) {
@@ -396,7 +396,7 @@ open class EJStyle protected constructor(builder: Builder) {
             this.paragraphTypeface = paragraphTypeface
             return this
         }
-        
+
         fun paragraphTextSize(@Px paragraphTextSize: Int): Builder {
             this.paragraphTextSize = paragraphTextSize
             return this
@@ -440,33 +440,33 @@ open class EJStyle protected constructor(builder: Builder) {
             return EJStyle(this)
         }
 
-        fun dividerMargin(marginTop: Int, marginBottom: Int): Builder {
-            this.margins.setDeviderMargin(marginTop, marginBottom)
+        fun dividerMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setDeviderMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun headingMargin(marginTop: Int, marginBottom: Int, headerType: HeadingLevel): Builder {
-            this.margins.setHeaderMargin(marginTop, marginBottom, headerType)
+        fun headingMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int, headerType: HeadingLevel): Builder {
+            this.margins.setHeaderMargin(marginLeft, marginTop, marginRight, marginBottom, headerType)
             return this
         }
 
-        fun imageMargin(marginTop: Int, marginBottom: Int): Builder {
-            this.margins.setImageMargin(marginTop, marginBottom)
+        fun imageMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setImageMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun paragraphMargin(marginTop: Int, marginBottom: Int): Builder {
-            this.margins.setParagraphMargin(marginTop, marginBottom)
+        fun paragraphMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setParagraphMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun rawHtmlMargin(marginTop: Int, marginBottom: Int): Builder {
-            this.margins.setHtmlMargin(marginTop, marginBottom)
+        fun rawHtmlMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setHtmlMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun tableMargin(marginTop: Int, marginBottom: Int): Builder {
-            this.margins.setTableMargin(marginTop, marginBottom)
+        fun tableMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setTableMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 

@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
                 .linkColor(ContextCompat.getColor(this,R.color.link_color))
-                .dividerBreakHeight(10)
+                .paragraphMargin(0, 0, 50 , 0 )
+                .dividerMargin(0, 0, 50 , 0 )
                 .build()
         )
     }
