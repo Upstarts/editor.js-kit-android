@@ -24,12 +24,24 @@ class MainActivity : AppCompatActivity() {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
-                .linkColor(ContextCompat.getColor(this,R.color.link_color))
-                .headingMargin(100, 0, 0 , 0 , HeadingLevel.h1)
-                .headingMargin(100, 0, 0 , 0 , HeadingLevel.h2)
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
-                .dividerBreakHeight(10)
-                .dividerBreakHeight(10)
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h1
+                )
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h2
+                )
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .dividerBreakHeight(DIVIDER_HEIGHT)
+                .dividerBreakHeight(DIVIDER_HEIGHT)
                 .build()
         )
     }
@@ -59,6 +71,10 @@ class MainActivity : AppCompatActivity() {
 
 fun readFileFromAssets(fname: String, assetsManager: AssetManager) =
     assetsManager.open(fname).readBytes().toString(Charsets.UTF_8)
+
+const val ZERO_MARGIN = 0
+const val STANDARD_MARGIN = 16
+const val DIVIDER_HEIGHT = 3
 
 
 
