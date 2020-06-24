@@ -188,7 +188,7 @@ open class EJStyle protected constructor(builder: Builder) {
                 String.format(
                     Locale.US,
                     "Supplied heading level: %d is invalid, where configured heading sizes are: `%s`",
-                    level, Arrays.toString(textSizes)
+                    level, textSizes.contentToString()
                 )
             )
         }
@@ -408,12 +408,12 @@ open class EJStyle protected constructor(builder: Builder) {
         }
 
         fun headingTypefaceDetailed(headingTypeface: Typeface, level: HeadingLevel): Builder {
-            this.headingTypefaceMap?.put(level.value, headingTypeface)
+            this.headingTypefaceMap[level.value] = headingTypeface
             return this
         }
 
         fun headingColorDetailed(color: Int, level: HeadingLevel): Builder {
-            this.headingColorsMap?.put(level.value, color)
+            this.headingColorsMap[level.value] = color
             return this
         }
 
@@ -476,7 +476,7 @@ open class EJStyle protected constructor(builder: Builder) {
         }
 
         fun headingFontStyleDetailed(style: Int, level: HeadingLevel): Builder {
-            this.headingFontStyleMap?.put(level.value, style)
+            this.headingFontStyleMap[level.value] = style
             return this
         }
     }
