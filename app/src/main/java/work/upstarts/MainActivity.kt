@@ -24,8 +24,16 @@ class MainActivity : AppCompatActivity() {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
                 .linkColor(ContextCompat.getColor(this,R.color.link_color))
-                .paragraphMargin(0, 0, 50 , 0 )
-                .dividerMargin(0, 0, 50 , 0 )
+                .paragraphMargin(100, 0, 0 , 0 )
+                .headingMargin(100, 0, 0 , 0, HeadingLevel.h1)
+                .headingMargin(100, 0, 0 , 0, HeadingLevel.h2)
+                .headingMargin(100, 0, 0 , 0, HeadingLevel.h3)
+                .dividerMargin(100, 0, 0 , 0 )
+                .imageMargin(100, 0, 0 , 0 )
+                .tableMargin(100, 0, 0 , 0 )
+                .listMargin(100, 0, 0 , 0 )
+                .paragraphMargin(100, 0, 0 , 0 )
+                .rawHtmlMargin(100, 0, 0,0)
                 .build()
         )
     }

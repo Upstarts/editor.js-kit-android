@@ -227,10 +227,10 @@ open class EJStyle protected constructor(builder: Builder) {
             view.updatePadding(view.paddingLeft, 32.dp, view.paddingRight, view.paddingBottom)
     }
 
-    fun applyDividerStyle(dividerView: TextView) {
+    fun applyDividerStyle(dividerView: TextView, container: View) {
         applyDelimiterColor(dividerView)
         applyDelimiterHeight(dividerView)
-        applyDelimiterMargins(dividerView)
+        applyDelimiterMargins(container)
     }
 
     private fun applyDelimiterColor(dividerView: TextView) {
@@ -245,8 +245,8 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
-    fun applyDelimiterMargins(dividerView: TextView) {
-        margins.deviderMargin?.let { applyViewMargins(it, dividerView) }
+    fun applyDelimiterMargins(dividerContainer: View) {
+        margins.deviderMargin?.let { applyViewMargins(it, dividerContainer) }
     }
 
     fun applyImageStyle(view: View, data: EJImageData) {
@@ -467,6 +467,11 @@ open class EJStyle protected constructor(builder: Builder) {
 
         fun tableMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setTableMargin(marginLeft, marginTop, marginRight, marginBottom)
+            return this
+        }
+
+        fun listMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+            this.margins.setListMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
