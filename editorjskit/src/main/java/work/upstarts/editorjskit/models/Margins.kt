@@ -1,11 +1,9 @@
 package work.upstarts.editorjskit.models
 
-import android.graphics.Typeface
-
 class Margins {
 
-     var deviderMargin: MarginData? = null
-     val headerMargin: HashMap<Int, MarginData>? = HashMap()
+    var deviderMargin: MarginData? = null
+    val headerMargin: HashMap<Int, MarginData>? = HashMap()
     var imageMargin: MarginData? = null
     var listMargin: MarginData? = null
     var paragraphMargin: MarginData? = null

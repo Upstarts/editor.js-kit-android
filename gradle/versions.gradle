@@ -1,0 +1,14 @@
+ext.versions = [
+        compileSdk           : 29,
+        targetSdk            : 29,
+        minSdk               : 21,
+        kotlin               : '1.3.72',
+        androidx_appcompat   : '1.1.0',
+        androidx_constraint  : '1.1.3',
+        androidx_recyclerview: '1.1.0',
+        androidx_core_ktx    : '1.2.0',
+        junit                : '4.13',
+        gson                 : '2.8.6',
+        adapter_delegates    : '4.3.0',
+        glide                : '4.11.0',
+]

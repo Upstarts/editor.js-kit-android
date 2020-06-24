@@ -1,0 +1,1 @@
+-keep class work.upstarts.editorjskit.models.** { *; }
