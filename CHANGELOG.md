@@ -1,5 +1,11 @@
 Change Log
 ==========
+## Version 1.0.0
+
+_2020-06-24_
+
+* ability to adjust margins added for all view types exept tables
+
 ## Version 0.0.9
 
 _2020-05-19_

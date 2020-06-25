@@ -28,7 +28,7 @@ class DividerAdapterDelegate(
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val view = parent.inflate(R.layout.item_divider)
-        theme?.applyDividerStyle(view.ejDivider)
+        theme?.applyDividerStyle(view.ejDivider, view)
         return ViewHolder(view)
     }
 

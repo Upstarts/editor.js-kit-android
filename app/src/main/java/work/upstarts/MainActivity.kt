@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 import work.upstarts.gsonparser.EJDeserializer
 import work.upstarts.editorjskit.models.EJBlock
+import work.upstarts.editorjskit.models.HeadingLevel
 import work.upstarts.editorjskit.ui.EditorJsAdapter
 import work.upstarts.editorjskit.ui.theme.EJStyle
 
@@ -23,7 +24,24 @@ class MainActivity : AppCompatActivity() {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
-                .dividerBreakHeight(10)
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h1
+                )
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h2
+                )
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .dividerBreakHeight(DIVIDER_HEIGHT)
+                .dividerBreakHeight(DIVIDER_HEIGHT)
                 .build()
         )
     }
@@ -53,3 +71,11 @@ class MainActivity : AppCompatActivity() {
 
 fun readFileFromAssets(fname: String, assetsManager: AssetManager) =
     assetsManager.open(fname).readBytes().toString(Charsets.UTF_8)
+
+const val ZERO_MARGIN = 0
+const val STANDARD_MARGIN = 16
+const val DIVIDER_HEIGHT = 3
+
+
+
+
