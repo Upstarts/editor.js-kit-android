@@ -11,4 +11,5 @@ ext.versions = [
         gson                 : '2.8.6',
         adapter_delegates    : '4.3.0',
         glide                : '4.11.0',
+        novoda_bintray_plugin: '0.9.2',
 ]

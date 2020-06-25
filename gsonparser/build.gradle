@@ -8,7 +8,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.novoda:bintray-release:0.9.1'
+        classpath "com.novoda:bintray-release:${versions.novoda_bintray_plugin}"
     }
 }
 
@@ -26,7 +26,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
         }
     }
 
@@ -56,7 +56,7 @@ publish {
     groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit-Gson'
     artifactId = 'ejkit-gson'
-    publishVersion = '0.0.9'
+    publishVersion = '1.0.0'
     licences = ['MIT']
     desc = 'Module adds gson adapter for EditorJS library'
     website = 'https://github.com/Upstarts/editor.js-kit-android'
