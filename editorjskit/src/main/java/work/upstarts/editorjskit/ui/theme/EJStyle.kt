@@ -25,6 +25,7 @@ import work.upstarts.editorjskit.ui.views.HeaderTextView
 import java.util.*
 import kotlin.collections.HashMap
 
+
 /**
  * Class to hold *theming* information for rending.
  */
@@ -41,6 +42,8 @@ open class EJStyle protected constructor(builder: Builder) {
     protected val listBulletColor: Int = builder.listBulletColor
 
     protected val bulletDrawable: Int = builder.bulletDrawableRes
+    protected val bulletHeight: Int? = builder.bulletHeight
+    protected val bulletWidth: Int? = builder.bulletWidth
 
     // by default - main text color
     protected val paragraphTextColor: Int = builder.paragraphTextColor
@@ -99,6 +102,19 @@ open class EJStyle protected constructor(builder: Builder) {
         if (bulletDrawable != 0) {
             bulletView.background = bulletView.context.getDrawable(bulletDrawable)
         }
+
+        bulletHeight?.let {
+            val params = bulletView.layoutParams
+            params.height = it
+            bulletView.layoutParams = params
+        }
+
+        bulletWidth?.let {
+            val params = bulletView.layoutParams
+            params.width = it
+            bulletView.layoutParams = params
+        }
+
     }
 
     fun applyParagraphStyle(baseView: View, margin: Int) {
@@ -296,6 +312,8 @@ open class EJStyle protected constructor(builder: Builder) {
         var listItemColor: Int = 0
         var listBulletColor: Int = 0
         var bulletDrawableRes: Int = 0
+        var bulletWidth: Int? = 0
+        var bulletHeight: Int? = 0
         var paragraphTextColor: Int = 0
         var paragraphBackgroundColor: Int = 0
         var paragraphTypeface: Typeface? = null
@@ -359,6 +377,12 @@ open class EJStyle protected constructor(builder: Builder) {
 
         fun bulletDrawableRes(@DrawableRes drawableRes: Int): Builder {
             this.bulletDrawableRes = drawableRes
+            return this
+        }
+
+        fun bulletSize(height: Int?, width: Int?): Builder {
+            this.bulletWidth = width
+            this.bulletHeight = height
             return this
         }
 
@@ -440,37 +464,49 @@ open class EJStyle protected constructor(builder: Builder) {
             return EJStyle(this)
         }
 
-        fun dividerMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun dividerMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setDeviderMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun headingMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int, headerType: HeadingLevel): Builder {
-            this.margins.setHeaderMargin(marginLeft, marginTop, marginRight, marginBottom, headerType)
+        fun headingMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int,
+            headerType: HeadingLevel
+        ): Builder {
+            this.margins.setHeaderMargin(
+                marginLeft,
+                marginTop,
+                marginRight,
+                marginBottom,
+                headerType
+            )
             return this
         }
 
-        fun imageMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun imageMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setImageMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun paragraphMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun paragraphMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setParagraphMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun rawHtmlMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun rawHtmlMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setHtmlMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun tableMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun tableMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setTableMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun listMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun listMargin(marginLeft: Int, marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
             this.margins.setListMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }

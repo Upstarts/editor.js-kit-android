@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
+import work.upstarts.editorjskit.environment.dp
 import work.upstarts.gsonparser.EJDeserializer
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.HeadingLevel
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                     ZERO_MARGIN,
                     HeadingLevel.h2
                 )
+                .bulletSize(10.dp, 10.dp)
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
                 .dividerBreakHeight(DIVIDER_HEIGHT)
                 .dividerBreakHeight(DIVIDER_HEIGHT)
