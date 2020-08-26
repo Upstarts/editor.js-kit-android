@@ -51,13 +51,8 @@ dependencies {
     api project(":editorjskit")
 }
 
+apply from: rootProject.file("gradle/publish.gradle")
 publish {
-    userOrg = 'heckslam'
-    groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit-Gson'
     artifactId = 'ejkit-gson'
-    publishVersion = '1.0.1'
-    licences = ['MIT']
-    desc = 'Module adds gson adapter for EditorJS library'
-    website = 'https://github.com/Upstarts/editor.js-kit-android'
 }

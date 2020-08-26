@@ -52,17 +52,12 @@ dependencies {
 
     api "com.hannesdorfmann:adapterdelegates4:${versions.adapter_delegates}"
     api "com.github.bumptech.glide:glide:${versions.glide}"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx_constraint}"
     testImplementation "junit:junit:${versions.junit}"
 }
 
+apply from: rootProject.file("gradle/publish.gradle")
 publish {
-    userOrg = 'heckslam'
-    groupId = 'com.github.upstarts'
     repoName = 'EditorJSKit'
     artifactId = 'ejkit'
-    publishVersion = '1.0.2'
-    licences = ['MIT']
-    desc = 'Library that helps to work with EditorJS'
-    website = 'https://github.com/Upstarts/editor.js-kit-android'
 }
