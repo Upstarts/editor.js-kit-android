@@ -339,33 +339,33 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     class Builder {
-        var margins = Margins()
-        var linkColor: Int? = null
-        var headingTextColor: Int = 0
-        var blockMargin: Int = 0
-        var listItemColor: Int = 0
-        var listBulletColor: Int = 0
-        var bulletDrawableRes: Int = 0
-        var bulletWidth: Int? = null
-        var bulletHeight: Int? = null
-        var paragraphTextColor: Int = 0
-        var paragraphBackgroundColor: Int = 0
-        var paragraphTypeface: Typeface? = null
-        var listTextItemTypeface: Typeface? = null
-        val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
-        val headingFontStyleMap: HashMap<Int, Int> = HashMap()
-        val headingColorsMap: HashMap<Int, Int> = HashMap()
-        var paragraphTextSize: Int = 0
-        var listTextItemTextSize: Float? = null
-        var headingTypeface: Typeface? = null
-        var headingTextSizes: FloatArray? = null
-        var headingTextMargins: IntArray? = null
-        var delimiterColor: Int = 0
-        var delimiterBreakHeight = 1
-        var tableColumnDrawableRes: Int = 0
-        var tableColumnTextColor: Int = 0
-        var imageBackground: Int = 0
-        var imageBorder: Int = 0
+        internal var margins = Margins()
+        internal var linkColor: Int? = null
+        internal var headingTextColor: Int = 0
+        internal var blockMargin: Int = 0
+        internal var listItemColor: Int = 0
+        internal var listBulletColor: Int = 0
+        internal var bulletDrawableRes: Int = 0
+        internal var bulletWidth: Int? = null
+        internal var bulletHeight: Int? = null
+        internal var paragraphTextColor: Int = 0
+        internal var paragraphBackgroundColor: Int = 0
+        internal var paragraphTypeface: Typeface? = null
+        internal var listTextItemTypeface: Typeface? = null
+        internal val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
+        internal val headingFontStyleMap: HashMap<Int, Int> = HashMap()
+        internal val headingColorsMap: HashMap<Int, Int> = HashMap()
+        internal var paragraphTextSize: Int = 0
+        internal var listTextItemTextSize: Float? = null
+        internal var headingTypeface: Typeface? = null
+        internal var headingTextSizes: FloatArray? = null
+        internal var headingTextMargins: IntArray? = null
+        internal var delimiterColor: Int = 0
+        internal var delimiterBreakHeight = 1
+        internal var tableColumnDrawableRes: Int = 0
+        internal var tableColumnTextColor: Int = 0
+        internal var imageBackground: Int = 0
+        internal var imageBorder: Int = 0
 
         internal constructor()
 
