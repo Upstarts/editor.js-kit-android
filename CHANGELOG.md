@@ -1,5 +1,12 @@
 Change Log
 ==========
+
+## Version 1.0.2
+
+_2020-08-26_
+
+* ability to adjust bullet size in lists (both width and height), default is 4dp for both
+
 ## Version 1.0.1
 
 _2020-06-24_

@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import kotlinx.android.synthetic.main.item_list.view.*
+import kotlinx.android.synthetic.main.item_list_row.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.inflate
 import work.upstarts.editorjskit.models.EJBlock

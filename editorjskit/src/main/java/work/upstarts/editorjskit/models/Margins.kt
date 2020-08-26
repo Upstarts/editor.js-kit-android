@@ -9,6 +9,8 @@ class Margins {
     var paragraphMargin: MarginData? = null
     var rawHtmlMargin: MarginData? = null
     var tableMargin: MarginData? = null
+    var bulletMargin: MarginData? = null
+    var listTextItemMargin: MarginData? = null
 
     data class MarginData(val marginLeft: Int, val marginTop: Int, val marginRight: Int, val marginBottom: Int)
 
@@ -22,6 +24,14 @@ class Margins {
 
     fun setImageMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
         imageMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
+    }
+
+    fun setBulletMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        bulletMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
+    }
+
+    fun setListTextItemMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {
+        listTextItemMargin = MarginData(marginLeft, marginTop, marginRight, marginBottom)
     }
 
     fun setListMargin (marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int) {

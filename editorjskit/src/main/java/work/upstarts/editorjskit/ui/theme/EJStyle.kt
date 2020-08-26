@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.*
 import androidx.annotation.IntRange
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.setPadding
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -24,6 +25,7 @@ import work.upstarts.editorjskit.models.data.EJImageData
 import work.upstarts.editorjskit.ui.views.HeaderTextView
 import java.util.*
 import kotlin.collections.HashMap
+
 
 /**
  * Class to hold *theming* information for rending.
@@ -41,6 +43,8 @@ open class EJStyle protected constructor(builder: Builder) {
     protected val listBulletColor: Int = builder.listBulletColor
 
     protected val bulletDrawable: Int = builder.bulletDrawableRes
+    protected val bulletHeight: Int? = builder.bulletHeight
+    protected val bulletWidth: Int? = builder.bulletWidth
 
     // by default - main text color
     protected val paragraphTextColor: Int = builder.paragraphTextColor
@@ -52,10 +56,12 @@ open class EJStyle protected constructor(builder: Builder) {
 
     // by default Typeface.MONOSPACE
     protected val paragraphTypeface: Typeface? = builder.paragraphTypeface
+    protected val listTextItemTypeface: Typeface? = builder.listTextItemTypeface
 
     // by default a bit (how much?!) smaller than normal text
     // applied ONLY if default typeface was used, otherwise, not applied
     protected val paragraphTextSize: Int = builder.paragraphTextSize
+    protected val listTextItemTextSize: Float? = builder.listTextItemTextSize
 
     // by default, whatever typeface is set on the TextView
     protected val headingTypeface: Typeface? = builder.headingTypeface
@@ -89,17 +95,59 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyListItemStyle(bulletView: View, textView: TextView) {
+        listTextItemTypeface?.let {
+            textView.typeface = it
+        }
+
+        listTextItemTextSize?.let {
+            textView.textSize = it
+        }
+
         if (listItemColor != 0) {
             textView.setTextColor(listItemColor)
-            if (listBulletColor != 0) {
-                bulletView.background.setTint(listBulletColor)
-            }
+        }
+
+        if (listBulletColor != 0) {
+            bulletView.background.setTint(listBulletColor)
         }
 
         if (bulletDrawable != 0) {
             bulletView.background = bulletView.context.getDrawable(bulletDrawable)
         }
+
+        bulletHeight?.let {
+            val params = bulletView.layoutParams
+            params.height = it
+            bulletView.layoutParams = params
+        }
+
+        bulletWidth?.let {
+            val params = bulletView.layoutParams
+            params.width = it
+            bulletView.layoutParams = params
+        }
+
+
+        margins.apply {
+            bulletMargin?.let {
+                setListItemMargin(bulletView, it)
+            }
+
+            listTextItemMargin?.let {
+                setListItemMargin(textView, it)
+            }
+        }
     }
+
+    private fun setListItemMargin(view: View, marginData: Margins.MarginData ) {
+        val params = view.layoutParams as ConstraintLayout.LayoutParams
+        marginData.apply {
+            params.setMargins(marginLeft, marginTop, marginRight, marginBottom)
+        }
+        view.layoutParams = params
+    }
+
+
 
     fun applyParagraphStyle(baseView: View, margin: Int) {
         applyParagraphTextStyle(baseView)
@@ -175,8 +223,9 @@ open class EJStyle protected constructor(builder: Builder) {
             headerTv.setTextColor(headingTextColor)
         }
         headingColorsMap[level]?.let {
-             headerTv.setTextColor(it) }
+            headerTv.setTextColor(it)
         }
+    }
 
     fun applyHeadingTextSize(headerTv: HeaderTextView, @IntRange(from = 1, to = 6) level: Int) {
         val textSizes = headingTextSizeMultipliers ?: HEADING_SIZES
@@ -278,9 +327,10 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyListMargin(view: View) {
-        val margins = margins.listMargin
-        if (margins != null) {
-            applyViewMargins(margins, view)
+        margins.apply {
+            listMargin?.let {
+                applyViewMargins(it, view)
+            }
         }
     }
 
@@ -289,29 +339,33 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     class Builder {
-        var margins = Margins()
-        var linkColor: Int? = null
-        var headingTextColor: Int = 0
-        var blockMargin: Int = 0
-        var listItemColor: Int = 0
-        var listBulletColor: Int = 0
-        var bulletDrawableRes: Int = 0
-        var paragraphTextColor: Int = 0
-        var paragraphBackgroundColor: Int = 0
-        var paragraphTypeface: Typeface? = null
-        val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
-        val headingFontStyleMap: HashMap<Int, Int> = HashMap()
-        val headingColorsMap: HashMap<Int, Int> = HashMap()
-        var paragraphTextSize: Int = 0
-        var headingTypeface: Typeface? = null
-        var headingTextSizes: FloatArray? = null
-        var headingTextMargins: IntArray? = null
-        var delimiterColor: Int = 0
-        var delimiterBreakHeight = 1
-        var tableColumnDrawableRes: Int = 0
-        var tableColumnTextColor: Int = 0
-        var imageBackground: Int = 0
-        var imageBorder: Int = 0
+        internal var margins = Margins()
+        internal var linkColor: Int? = null
+        internal var headingTextColor: Int = 0
+        internal var blockMargin: Int = 0
+        internal var listItemColor: Int = 0
+        internal var listBulletColor: Int = 0
+        internal var bulletDrawableRes: Int = 0
+        internal var bulletWidth: Int? = null
+        internal var bulletHeight: Int? = null
+        internal var paragraphTextColor: Int = 0
+        internal var paragraphBackgroundColor: Int = 0
+        internal var paragraphTypeface: Typeface? = null
+        internal var listTextItemTypeface: Typeface? = null
+        internal val headingTypefaceMap: HashMap<Int, Typeface> = HashMap()
+        internal val headingFontStyleMap: HashMap<Int, Int> = HashMap()
+        internal val headingColorsMap: HashMap<Int, Int> = HashMap()
+        internal var paragraphTextSize: Int = 0
+        internal var listTextItemTextSize: Float? = null
+        internal var headingTypeface: Typeface? = null
+        internal var headingTextSizes: FloatArray? = null
+        internal var headingTextMargins: IntArray? = null
+        internal var delimiterColor: Int = 0
+        internal var delimiterBreakHeight = 1
+        internal var tableColumnDrawableRes: Int = 0
+        internal var tableColumnTextColor: Int = 0
+        internal var imageBackground: Int = 0
+        internal var imageBorder: Int = 0
 
         internal constructor()
 
@@ -362,6 +416,12 @@ open class EJStyle protected constructor(builder: Builder) {
             return this
         }
 
+        fun bulletSize(height: Int?, width: Int?): Builder {
+            this.bulletWidth = width
+            this.bulletHeight = height
+            return this
+        }
+
         fun imageBackgroundRes(@DrawableRes imageBackground: Int): Builder {
             this.imageBackground = imageBackground
             return this
@@ -397,8 +457,18 @@ open class EJStyle protected constructor(builder: Builder) {
             return this
         }
 
+        fun listTextItemTypeFace(paragraphTypeface: Typeface): Builder {
+            this.listTextItemTypeface = paragraphTypeface
+            return this
+        }
+
         fun paragraphTextSize(@Px paragraphTextSize: Int): Builder {
             this.paragraphTextSize = paragraphTextSize
+            return this
+        }
+
+        fun listTextItemTextSize(@Px ItemTextSize: Float): Builder {
+            this.listTextItemTextSize = ItemTextSize
             return this
         }
 
@@ -440,37 +510,99 @@ open class EJStyle protected constructor(builder: Builder) {
             return EJStyle(this)
         }
 
-        fun dividerMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun dividerMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setDeviderMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun headingMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int, headerType: HeadingLevel): Builder {
-            this.margins.setHeaderMargin(marginLeft, marginTop, marginRight, marginBottom, headerType)
+        fun headingMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int,
+            headerType: HeadingLevel
+        ): Builder {
+            this.margins.setHeaderMargin(
+                marginLeft,
+                marginTop,
+                marginRight,
+                marginBottom,
+                headerType
+            )
             return this
         }
 
-        fun imageMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun imageMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setImageMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun paragraphMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun bulletMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
+            this.margins.setBulletMargin(marginLeft, marginTop, marginRight, marginBottom)
+            return this
+        }
+
+        fun listTextItemMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
+            this.margins.setListTextItemMargin(marginLeft, marginTop, marginRight, marginBottom)
+            return this
+        }
+
+        fun paragraphMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setParagraphMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun rawHtmlMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun rawHtmlMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setHtmlMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun tableMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun tableMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setTableMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }
 
-        fun listMargin(marginLeft: Int,  marginTop: Int, marginRight: Int, marginBottom: Int): Builder {
+        fun listMargin(
+            marginLeft: Int,
+            marginTop: Int,
+            marginRight: Int,
+            marginBottom: Int
+        ): Builder {
             this.margins.setListMargin(marginLeft, marginTop, marginRight, marginBottom)
             return this
         }

@@ -4,10 +4,12 @@ import android.content.res.AssetManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
+import work.upstarts.editorjskit.environment.dp
 import work.upstarts.gsonparser.EJDeserializer
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.HeadingLevel
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                     HeadingLevel.h2
                 )
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .listTextItemTextSize(18f)
                 .dividerBreakHeight(DIVIDER_HEIGHT)
                 .dividerBreakHeight(DIVIDER_HEIGHT)
                 .build()
@@ -75,6 +78,8 @@ fun readFileFromAssets(fname: String, assetsManager: AssetManager) =
 const val ZERO_MARGIN = 0
 const val STANDARD_MARGIN = 16
 const val DIVIDER_HEIGHT = 3
+const val BULLET_SIZE = 16
+
 
 
 
