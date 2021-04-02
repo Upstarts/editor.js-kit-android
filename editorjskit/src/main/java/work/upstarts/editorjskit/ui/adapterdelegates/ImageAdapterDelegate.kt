@@ -2,9 +2,10 @@ package work.upstarts.editorjskit.ui.adapterdelegates
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.synthetic.main.item_image.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.inflate
 import work.upstarts.editorjskit.environment.loadImage
@@ -35,6 +36,9 @@ class ImageAdapterDelegate(
     private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var imageBlock: EJImageBlock
 
+        private val imageView: ImageView = view.findViewById(R.id.imageView)
+        private val imageCaption: TextView = view.findViewById(R.id.imageCaption)
+
         fun bind(paragraphBlock: EJImageBlock) {
             this.imageBlock = paragraphBlock
             with(itemView) {
@@ -42,9 +46,9 @@ class ImageAdapterDelegate(
                 theme?.applyImageStyle(this, data)
                 imageView.loadImage(data.file.url, data)
                 val caption = data.caption
-                    if (caption!=null&&caption.isNotEmpty()) {
-                        imageCaption.text = caption
-                        imageCaption.visibility = View.VISIBLE
+                if (caption != null && caption.isNotEmpty()) {
+                    imageCaption.text = caption
+                    imageCaption.visibility = View.VISIBLE
                 }
             }
         }
