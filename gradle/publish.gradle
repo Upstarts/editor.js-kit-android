@@ -1,0 +1,10 @@
+apply from: rootProject.file("gradle/versions.gradle")
+
+publish {
+    userOrg = 'heckslam'
+    groupId = 'com.github.upstarts'
+    publishVersion = "${versions.publishVersion}"
+    licences = ['MIT']
+    desc = 'Module adds gson adapter for EditorJS library'
+    website = 'https://github.com/Upstarts/editor.js-kit-android'
+}

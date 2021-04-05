@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="textDark">#000000</color>
+    <color name="deviderColor">#6D7A95</color>
     <color name="textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
     <color name="textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
 
     <color name="table_background_color">#eee</color>
     <color name="table_divider_color">#AFAFAF</color>
     <color name="delimeter_color">#FF00FF</color>
+    <color name="link_color">#258FFB</color>
+    <color name="default_color">#808080</color>
 </resources>

@@ -5,7 +5,7 @@
       "type" : "header",
       "data" : {
         "text" : "Editor.js",
-        "level" : 2
+        "level" : 1
       }
     },
     {
@@ -28,7 +28,7 @@
         "items" : [
           "It is a block-styled editor",
           "It returns clean data output in JSON",
-          "Designed to be extendable and pluggable with a simple APIfa asdfasdf asd fasdf baksdbfn asdbf hjasb fhjasbdjh basdhjf bahjsdbf hjasdb hjfba shjdfbk ashjbfhjs bfjhb hjsd bkkjbhskhbjfakbhfdsahkbhhb bhaf b sdhba sfhbf sdkbkhba fsdbha fdsbhjkf akbjhfasdbhfasd khjbfbhfasdbhjfdfda skhbfjdkfb dhbhjfd bhjfd ah bfjss fdhbfahbj afds hfbhkj df hsdbhafjd bh fashjbfd sbhjfdas&nbsp;"
+          "Designed to be extendable and pluggable with a simple API"
         ]
       }
     },
@@ -61,7 +61,7 @@
     {
       "type" : "paragraph",
       "data" : {
-        "text" : "Classic WYSIWYG-editors produce raw HTML-markup with both content data and content appearance. On the contrary, Editor.js outputs JSON object with data of each Block. You can see an example below"
+        "text" : "Classic WYSIWYG-editors produce raw HTML-markup with both content data and content appearance. On the contrary, <a href=\"https://github.com/editor-js\">Editor.js</a> outputs JSON object with data of each Block. You can see an example below"
       }
     },
     {
@@ -83,20 +83,45 @@
     {
       "type" : "paragraph",
       "data" : {
-        "text" : "We have been <mark class=\"cdx-marker\">working </mark>on this project more than three years. Several large media projects help us to test and debug the Editor, to make it's core more stable. At the same time we significantly improved the API. Now, it can be used to create any plugin for any task. Hope you enjoy. 😏"
+        "text" : "89146206190"
+      }
+    },{
+      "type" : "delimiter",
+      "data" : {}
+    },
+    {
+      "type" : "paragraph",
+      "data" : {
+        "text" : "89146206190"
+      }
+    },{
+      "type" : "delimiter",
+      "data" : {}
+    },
+    {
+      "type" : "paragraph",
+      "data" : {
+        "text" : "89146206190"
+      }
+    },{
+      "type" : "delimiter",
+      "data" : {}
+    },
+    {
+      "type" : "paragraph",
+      "data" : {
+        "text" : "89146206190"
       }
     },
     {
       "type": "image",
       "data": {
         "file": {
-          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png",
-          "width": 136,
-          "height": 124
+          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png"
         },
-        "caption": "",
+
         "withBorder": false,
-        "stretched": false,
+        "stretched": true,
         "withBackground": false
       }
     },
@@ -104,18 +129,12 @@
       "type" : "image",
       "data" : {
         "file" : {
-          "url" : "https://codex.so/upload/redactor_images/o_e48549d1855c7fc1807308dd14990126.jpg"
+          "url" : "https://vesort.ru/wa-data/public/photos/70/00/70/70.1500x0.jpg"
         },
-        "caption" : "",
-        "withBorder" : true,
-        "stretched" : false,
+        "caption" : "Here could be some caption for this picture",
+        "withBorder" : false,
+        "stretched" : true,
         "withBackground" : true
-      }
-    },
-    {
-      "type" : "code",
-      "data" : {
-        "code" : "sdfgsf"
       }
     },
     {

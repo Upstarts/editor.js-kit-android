@@ -1,8 +1,6 @@
-package work.upstarts.editorjskit.models.serializer
+package work.upstarts.gsonparser
 
-import android.util.Log
 import com.google.gson.*
-import work.upstarts.editorjskit.BuildConfig
 import work.upstarts.editorjskit.EJKit
 import work.upstarts.editorjskit.models.*
 import work.upstarts.editorjskit.models.data.EJDelimiterData
@@ -20,10 +18,6 @@ class EJDeserializer : JsonDeserializer<MutableList<EJBlock>> {
         val resultBlockList = mutableListOf<EJBlock>()
 
         val blocks = json.asJsonArray
-
-        if (BuildConfig.DEBUG) {
-            Log.d("EJDeserializer", "blocks $blocks")
-        }
 
         for (block in blocks) {
             val blockObj = block.asJsonObject

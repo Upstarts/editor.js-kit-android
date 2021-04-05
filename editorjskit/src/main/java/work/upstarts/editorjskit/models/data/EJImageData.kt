@@ -3,6 +3,7 @@ package work.upstarts.editorjskit.models.data
 
 data class EJImageData(
     val file: ImageFile,
+    val caption: String?,
     val withBorder: Boolean,
     val stretched: Boolean,
     val withBackground: Boolean

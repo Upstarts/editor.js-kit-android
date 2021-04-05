@@ -1,2 +1,3 @@
 include ':app', ':editorjskit'
 rootProject.name='EditorJSKitSample'
+include ':gsonparser'

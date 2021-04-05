@@ -5,37 +5,56 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
 import work.upstarts.editorjskit.models.EJBlock
-import work.upstarts.editorjskit.models.serializer.EJDeserializer
+import work.upstarts.editorjskit.models.HeadingLevel
 import work.upstarts.editorjskit.ui.EditorJsAdapter
 import work.upstarts.editorjskit.ui.theme.EJStyle
+import work.upstarts.gsonparser.EJDeserializer
 
+const val DATA_JSON_PATH = "dummy_data.json"
+
+data class EJResponse(val blocks: List<EJBlock>)
 
 class MainActivity : AppCompatActivity() {
 
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-                .thematicBreakColor(ContextCompat.getColor(this, R.color.delimeter_color))
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h1
+                )
+                .headingMargin(
+                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    ZERO_MARGIN,
+                    HeadingLevel.h2
+                )
+                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .listTextItemTextSize(18f)
+                .dividerBreakHeight(DIVIDER_HEIGHT)
+                .dividerBreakHeight(DIVIDER_HEIGHT)
                 .build()
         )
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
             adapter = rvAdapter
-
-            addItemDecoration(SpacesItemDecoration(
-                context.resources.getDimensionPixelSize(R.dimen.recycler_space)
-            ))
         }
 
         val blocksType = object : TypeToken<MutableList<EJBlock>>() {}.type
@@ -44,8 +63,7 @@ class MainActivity : AppCompatActivity() {
             .registerTypeAdapter(blocksType, EJDeserializer())
             .create()
 
-
-        val dummyData = readFileFromAssets("dummy_data.json", assets)
+        val dummyData = readFileFromAssets(DATA_JSON_PATH, assets)
         val ejResponse = gson.fromJson(dummyData, EJResponse::class.java)
 
         rvAdapter.items = ejResponse.blocks
@@ -53,9 +71,15 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+fun readFileFromAssets(fname: String, assetsManager: AssetManager) =
+    assetsManager.open(fname).readBytes().toString(Charsets.UTF_8)
 
-fun readFileFromAssets(fname: String, assetsManager: AssetManager): String {
-    return assetsManager.open(fname).readBytes().toString(Charsets.UTF_8)
-}
+const val ZERO_MARGIN = 0
+const val STANDARD_MARGIN = 16
+const val DIVIDER_HEIGHT = 3
+const val BULLET_SIZE = 16
 
-data class EJResponse(val blocks: List<EJBlock>)
+
+
+
+

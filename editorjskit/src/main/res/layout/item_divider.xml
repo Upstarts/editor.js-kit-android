@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/margin_high"
+    android:paddingBottom="@dimen/margin_high">
+
+    <TextView
+        android:id="@+id/ejDivider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <View
-            android:id="@+id/ejDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textDarkPrimary"
-            tools:text="Header"/>
-
+        android:layout_height="1dp"
+        android:background="@color/deviderColor"
+        tools:text="Header" />
 </FrameLayout>

@@ -2,9 +2,9 @@ package work.upstarts.editorjskit.ui.adapterdelegates
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.synthetic.main.item_divider.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.inflate
 import work.upstarts.editorjskit.models.EJBlock
@@ -28,13 +28,13 @@ class DividerAdapterDelegate(
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val view = parent.inflate(R.layout.item_divider)
-        theme?.applyThematicBreakStyle(view.ejDivider)
+        val dividerView: TextView = view.findViewById(R.id.ejDivider)
 
+        theme?.applyDividerStyle(dividerView, view)
         return ViewHolder(view)
     }
 
     private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         fun bind() {
         }
     }

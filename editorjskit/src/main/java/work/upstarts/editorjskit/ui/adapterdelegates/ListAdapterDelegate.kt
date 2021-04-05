@@ -2,10 +2,10 @@ package work.upstarts.editorjskit.ui.adapterdelegates
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.synthetic.main.item_list.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.inflate
 import work.upstarts.editorjskit.models.EJBlock
@@ -39,33 +39,35 @@ class ListAdapterDelegate(
         private lateinit var listData: EJListData
         var prefix = ""
 
+        private val containerLayout: LinearLayout = view.findViewById(R.id.container)
+
         fun bind(listBlock: EJListBlock) {
             this.listData = listBlock.data
-            itemView.container.removeAllViews()
-
+            containerLayout.removeAllViews()
+            theme?.applyListMargin(itemView)
             listData.items.forEachIndexed { index, s ->
                 if (listData.type == ListType.ORDERED)
                     prefix = "${index + 1}."
                 inflateSectionTitle(s, itemView, prefix)
             }
         }
-    }
 
-    private fun inflateSectionTitle(text: String, itemView: View, prefix: String) {
-        itemView.container.inflate(R.layout.item_list_row).also {
-            it.findViewWithTag<TextView>("listRowTv").apply {
-                tag = null
-                val listText = "$prefix $text"
-                setText(listText)
-                val bulletView = it.findViewById<View>(R.id.bulletView)
-                if (prefix.isEmpty()) {
-                    bulletView.visibility = View.VISIBLE
+        private fun inflateSectionTitle(text: String, itemView: View, prefix: String) {
+            containerLayout.inflate(R.layout.item_list_row).also {
+                it.findViewWithTag<TextView>("listRowTv").apply {
+                    tag = null
+                    val listText = "$prefix $text"
+                    setText(listText)
+                    val bulletView = it.findViewById<View>(R.id.bulletView)
+                    if (prefix.isEmpty()) {
+                        bulletView.visibility = View.VISIBLE
+                    }
+
+                    theme?.applyListItemStyle(bulletView, this)
                 }
 
-                theme?.applyListItemStyle(bulletView, this)
+                (itemView as ViewGroup).addView(it)
             }
-
-            (itemView as ViewGroup).addView(it)
         }
     }
 }
