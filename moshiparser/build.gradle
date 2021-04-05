@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'kotlin-android'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.novoda:bintray-release:${versions.novoda_bintray_plugin}"
+    }
+}
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+
+    //Moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
+    implementation "com.squareup.moshi:moshi-adapters:1.11.0"
+
+    api project(":editorjskit")
+    testImplementation 'junit:junit:4.13.2'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+apply from: rootProject.file("gradle/publish.gradle")
+publish {
+    repoName = 'EditorJSKit-Moshi'
+    artifactId = 'ejkit-moshi'
+}
