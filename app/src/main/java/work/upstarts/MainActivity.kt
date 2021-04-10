@@ -4,17 +4,15 @@ import android.content.res.AssetManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
-import work.upstarts.editorjskit.environment.dp
-import work.upstarts.gsonparser.EJDeserializer
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.HeadingLevel
 import work.upstarts.editorjskit.ui.EditorJsAdapter
 import work.upstarts.editorjskit.ui.theme.EJStyle
+import work.upstarts.gsonparser.EJDeserializer
 
 const val DATA_JSON_PATH = "dummy_data.json"
 
@@ -53,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
             adapter = rvAdapter

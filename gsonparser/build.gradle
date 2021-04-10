@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.panpf.bintray-publish'
 apply plugin: 'kotlin-android'
 
 buildscript {
@@ -8,7 +8,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.novoda:bintray-release:${versions.novoda_bintray_plugin}"
+        classpath "com.github.panpf.bintray-publish:bintray-publish:${versions.novoda_bintray_plugin}"
     }
 }
 

@@ -11,12 +11,10 @@ import android.widget.TextView
 import androidx.annotation.*
 import androidx.annotation.IntRange
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
-import kotlinx.android.synthetic.main.item_header.view.*
-import kotlinx.android.synthetic.main.item_image.view.*
-import kotlinx.android.synthetic.main.item_paragraph.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.dp
 import work.upstarts.editorjskit.models.HeadingLevel
@@ -87,7 +85,7 @@ open class EJStyle protected constructor(builder: Builder) {
 
     fun applyTableColumnBackground(view: TextView) {
         if (tableColumnDrawableRes != 0) {
-            view.background = view.context.getDrawable(tableColumnDrawableRes)
+            view.background = ContextCompat.getDrawable(view.context, tableColumnDrawableRes)
         }
         if (tableColumnTextColor != 0) {
             view.setTextColor(tableColumnTextColor)
@@ -112,7 +110,7 @@ open class EJStyle protected constructor(builder: Builder) {
         }
 
         if (bulletDrawable != 0) {
-            bulletView.background = bulletView.context.getDrawable(bulletDrawable)
+            bulletView.background = ContextCompat.getDrawable(bulletView.context, bulletDrawable)
         }
 
         bulletHeight?.let {
@@ -139,7 +137,7 @@ open class EJStyle protected constructor(builder: Builder) {
         }
     }
 
-    private fun setListItemMargin(view: View, marginData: Margins.MarginData ) {
+    private fun setListItemMargin(view: View, marginData: Margins.MarginData) {
         val params = view.layoutParams as ConstraintLayout.LayoutParams
         marginData.apply {
             params.setMargins(marginLeft, marginTop, marginRight, marginBottom)
@@ -148,29 +146,28 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
 
-
     fun applyParagraphStyle(baseView: View, margin: Int) {
         applyParagraphTextStyle(baseView)
         applyParagraphMargin(baseView, margin)
     }
 
     fun applyParagraphTextStyle(baseView: View) {
+        val paragraphTextView: TextView = baseView.findViewById(R.id.paragraphTv)
+
         if (paragraphTextColor != 0) {
-            baseView.paragraphTv.setTextColor(paragraphTextColor)
+            paragraphTextView.setTextColor(paragraphTextColor)
         }
 
         if (paragraphTypeface != null) {
-            baseView.paragraphTv.typeface = paragraphTypeface
+            paragraphTextView.typeface = paragraphTypeface
         }
 
         if (paragraphTextSize > 0) {
-            baseView.paragraphTv.textSize = paragraphTextSize.toFloat()
+            paragraphTextView.textSize = paragraphTextSize.toFloat()
         }
 
-        applyBackgroundColor(baseView.paragraphTv)
-
-
-        applyBlockPadding(baseView.paragraphTv)
+        applyBackgroundColor(paragraphTextView)
+        applyBlockPadding(paragraphTextView)
     }
 
     private fun applyParagraphMargin(view: View, defaulMargin: Int) {
@@ -199,11 +196,13 @@ open class EJStyle protected constructor(builder: Builder) {
 
 
     fun applyHeadingStyle(view: View, paint: Paint, @IntRange(from = 1, to = 6) level: Int) {
+        val headerTextView: HeaderTextView = view.findViewById(R.id.headerTv)
+
         applyHeadingTextStyle(paint, level)
-        applyHeadingTextSize(view.headerTv, level)
+        applyHeadingTextSize(headerTextView, level)
         applyHeadingMargin(view, level)
-        applyFontStyle(view.headerTv, level)
-        applyHeadingTextColor(view.headerTv, level)
+        applyFontStyle(headerTextView, level)
+        applyHeadingTextColor(headerTextView, level)
     }
 
     private fun applyHeadingTextStyle(paint: Paint, headerLevel: Int) {
@@ -299,7 +298,9 @@ open class EJStyle protected constructor(builder: Builder) {
     }
 
     fun applyImageStyle(view: View, data: EJImageData) {
-        applyImageRes(view.imageView, data)
+        val imageView: ImageView = view.findViewById(R.id.imageView)
+
+        applyImageRes(imageView, data)
         applyImageMargin(view, data)
     }
 
@@ -656,12 +657,10 @@ open class EJStyle protected constructor(builder: Builder) {
          * @since 1.0.0
          */
         fun builderWithDefaults(context: Context): Builder {
-            return with(context) {
-                Builder()
-                    .bulletDrawableRes(R.drawable.list_circle)
-                    .tableColumnDrawableRes(R.drawable.table_content_cell_bg)
-                    .imageBackgroundRes(R.drawable.image_background)
-            }
+            return Builder()
+                .bulletDrawableRes(R.drawable.list_circle)
+                .tableColumnDrawableRes(R.drawable.table_content_cell_bg)
+                .imageBackgroundRes(R.drawable.image_background)
         }
 
         private val HEADING_SIZES = floatArrayOf(22f, 20f, 17f, 16f, 14f, 12f)

@@ -4,10 +4,10 @@ import android.text.Spannable
 import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.synthetic.main.item_paragraph.view.*
 import work.upstarts.editorjskit.R
 import work.upstarts.editorjskit.environment.applyThemeForUrlSpans
 import work.upstarts.editorjskit.environment.inflate
@@ -45,13 +45,15 @@ class ParagraphAdapterDelegate(
     private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var headerBlock: EJParagraphBlock
 
+        private val paragraphTextView: TextView = view.findViewById(R.id.paragraphTv)
+
         fun bind(paragraphBlock: EJParagraphBlock) {
             this.headerBlock = paragraphBlock
             with(itemView) {
                 val text = paragraphBlock.data.text.parseAsHtml() as Spannable
                 text.applyThemeForUrlSpans(theme, context)
-                paragraphTv.text = text
-                paragraphTv.movementMethod = LinkMovementMethod.getInstance()
+                paragraphTextView.text = text
+                paragraphTextView.movementMethod = LinkMovementMethod.getInstance()
             }
         }
     }
