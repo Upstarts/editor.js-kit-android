@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+## Version 2.0.0
+
+_2021-08-04_
+
+* Breaking changes:
+    - EJBLock now is interface
+* Drop kotlin-android-extensions
+* Adapter for moshi
+* Update gradle and dependencies
+
 ## Version 1.0.3
 
 _2020-08-26_
@@ -23,8 +33,9 @@ _2020-05-19_
 
 _2020-05-04_
 
- *  Add basic proguard rules
+* Add basic proguard rules
 
- *  Update all dependencies. Add file versions.gradle and declare all versions there
+* Update all dependencies. Add file versions.gradle and declare all versions there
 
- *  Move GSON adapter as separate dependency. If you use other library for parsing json, you need to write adapter yourself.
+* Move GSON adapter as separate dependency. If you use other library for parsing json, you need to write adapter
+  yourself.
