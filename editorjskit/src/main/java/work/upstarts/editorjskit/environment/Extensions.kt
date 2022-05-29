@@ -42,10 +42,7 @@ fun ImageView.loadImage(url: String?, data: EJImageData) {
 }
 
 val Int.dp: Int
-    get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
-
-val Int.sp: Int
-    get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 fun Spannable.applyThemeForUrlSpans(theme: EJStyle?, context: Context) {
     for (u in getSpans(0, length, URLSpan::class.java)) {
