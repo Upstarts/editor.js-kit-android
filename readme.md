@@ -1,6 +1,9 @@
 
 <p align="center">
-  <img src="logo.png" width=400 />
+<picture width=400>
+  <source media="(prefers-color-scheme: dark)" srcset="https://static.upstarts.work/ejkit/logo-dark.png?">
+  <img src="https://static.upstarts.work/ejkit/logo-light.png?" width=400>
+</picture>
 </p>
 
 [ ![Download](https://api.bintray.com/packages/heckslam/EditorJSKit/ejkit/images/download.svg) ](https://bintray.com/heckslam/EditorJSKit/ejkit/_latestVersion)
@@ -12,7 +15,7 @@ A non-official Android Framework for [Editor.js](https://editorjs.io) - block st
 Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json) into native views like that 👇
 
 <p align="center">
-  <img src="screenshot.png" width=420 />
+  <img src="https://static.upstarts.work/ejkit/editorjs.kit-android-scr.png?" width=320 />
 </p>
 
 #### Supported blocks
@@ -21,7 +24,6 @@ Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json)
 * 📷 Image
 * 🖌 Delimiter
 * 💌 Paragraph
-* 🕸 Link
 * 🌿 List
 * 📋 Table
 
@@ -127,6 +129,6 @@ You can find and test the example in a [sample activity](app/src/main/java/work/
 
 [Upstarts team](https://upstarts.work)
 
-[Vadim Popov](https://t.me/popovvadim) - Architecture draft
-
 [Ruslan Aliev](https://github.com/heckslam) - Architecture, Implementation
+
+[Vadim Popov](https://t.me/popovvadim) - Architecture draft
