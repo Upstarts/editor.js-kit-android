@@ -15,7 +15,7 @@ A non-official Android Framework for [Editor.js](https://editorjs.io) - block st
 Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json) into native views like that 👇
 
 <p align="center">
-  <img src="https://static.upstarts.work/ejkit/editorjs.kit-android-scr.png?" width=420 />
+  <img src="https://static.upstarts.work/ejkit/editorjs.kit-android-scr.png?" width=320 />
 </p>
 
 #### Supported blocks
