@@ -6,8 +6,7 @@
 </picture>
 </p>
 
-[ ![Download](https://api.bintray.com/packages/heckslam/EditorJSKit/ejkit/images/download.svg) ](https://bintray.com/heckslam/EditorJSKit/ejkit/_latestVersion)
-
+![Maven Central](https://img.shields.io/maven-central/v/io.github.upstarts/ejkit)
 ## About
 
 A non-official Android Framework for [Editor.js](https://editorjs.io) - block styled editor. It's purpose to make easy use of rendering and parsing of blocks.
@@ -30,9 +29,9 @@ Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json)
 ## Installation
 
 ```
-maven { url "https://dl.bintray.com/heckslam/EditorJSKit" }
-implementation 'com.github.upstarts:ejkit:X.X.X' - look at badge above for latest version
-implementation 'com.github.upstarts:ejkit-gson:X.X.X' - adds GSON adapter. If you use other library for parsing json, you need to write adapter yourself.
+implementation 'io.github.upstarts:ejkit:X.X.X' - look at badge above for latest version
+implementation 'io.github.upstarts:ejkit-gson:X.X.X' - adds GSON adapter. If you use other library for parsing json, you need to write adapter yourself.
+implementation 'io.github.upstarts:ejkit-moshi:X.X.X' - adds Moshi adapter.
 ```
 
 ## Setup
