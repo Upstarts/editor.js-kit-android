@@ -40,15 +40,15 @@ dependencies {
 }
 
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                artifactId "ejkit-moshi"
-                groupId "work.upstarts.editorjskit"
-                version "${versions.publishVersion}"
-            }
-        }
-    }
+
+ext {
+    // group id
+    PUBLISH_GROUP_ID = 'io.github.upstarts'
+    // текущая версия библиотеки
+    PUBLISH_VERSION = "${versions.publishVersion}"
+    // artifact id библиотеки
+    PUBLISH_ARTIFACT_ID = 'ejkit-moshi'
 }
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+

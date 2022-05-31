@@ -1,43 +1,59 @@
 {
-  "time" : 1560845515750,
-  "blocks" : [
+  "time": 1560338876987,
+  "blocks": [
     {
-      "type" : "header",
-      "data" : {
-        "text" : "Editor.js",
-        "level" : 1
+      "type": "header",
+      "data": {
+        "text": "Editor.js Kit Android",
+        "level": 1
       }
     },
     {
       "type" : "paragraph",
       "data" : {
-        "text" : "Hey. Meet the new Editor. On this page you can see it in action — try to edit this text."
+        "text" : "Render native UI with formatted JSON data."
       }
     },
     {
-      "type" : "header",
-      "data" : {
-        "text" : "Key features",
-        "level" : 3
+      "type": "image",
+      "data": {
+        "file": {
+          "url": "https://static.upstarts.work/ejkit/logo-light.png"
+        },
+        "caption": "Brought to you by Upstarts team",
+        "withBorder": true,
+        "stretched": false,
+        "withBackground": false
       }
     },
     {
       "type" : "list",
       "data" : {
-        "style" : "unordered",
+        "style" : "ordered",
         "items" : [
-          "It is a block-styled editor",
-          "It returns clean data output in JSON",
-          "Designed to be extendable and pluggable with a simple API"
+          "Editor.JS is a block-styled editor",
+          "The Kit renders clean JSON data natively",
+          "Designed to be extendable and pluggable"
         ]
       }
     },
     {
-      "type" : "header",
+      "type" : "linkTool",
       "data" : {
-        "text" : "What does it mean «block-styled editor»",
-        "level" : 3
+        "link" : "https://upstarts.work",
+        "meta" : {
+          "title" : "Upstarts Team",
+          "site_name" : "Upstarts",
+          "description" : "Mobile development team. We develop mobile apps for iOS and Android. We research, prototype, sketch, and code apps & backend business logic.",
+          "image" : {
+            "url" : "https://static.upstarts.work/img/logo-blue-300px.png"
+          }
+        }
       }
+    },
+    {
+      "type": "delimiter",
+      "data" : {}
     },
     {
       "type" : "paragraph",
@@ -48,20 +64,7 @@
     {
       "type" : "paragraph",
       "data" : {
-        "text" : "There are dozens of <a href=\"https://github.com/editor-js\">ready-to-use Blocks</a> and the <a href=\"https://editorjs.io/creating-a-block-tool\">simple API</a> for creation any Block you need. For example, you can implement Blocks for Tweets, Instagram posts, surveys and polls, CTA-buttons and even games."
-      }
-    },
-    {
-      "type" : "header",
-      "data" : {
-        "text" : "What does it mean clean data output",
-        "level" : 3
-      }
-    },
-    {
-      "type" : "paragraph",
-      "data" : {
-        "text" : "Classic WYSIWYG-editors produce raw HTML-markup with both content data and content appearance. On the contrary, <a href=\"https://github.com/editor-js\">Editor.js</a> outputs JSON object with data of each Block. You can see an example below"
+        "text" : "There <b>are</b> dozens of <a href=\"https://github.com/editor-js\">ready-to-use Blocks</a> and the <a href=\"https://editorjs.io/creating-a-block-tool\">simple API</a> for creation any Block you need. For example, you can implement Blocks for Tweets, Instagram posts, surveys and polls, CTA-buttons and even games."
       }
     },
     {
@@ -71,103 +74,11 @@
       }
     },
     {
-      "type" : "paragraph",
+      "type" : "raw",
       "data" : {
-        "text" : "Clean data is useful to sanitize, validate and process on the backend."
-      }
-    },
-    {
-      "type" : "delimiter",
-      "data" : {}
-    },
-    {
-      "type" : "paragraph",
-      "data" : {
-        "text" : "89146206190"
-      }
-    },{
-      "type" : "delimiter",
-      "data" : {}
-    },
-    {
-      "type" : "paragraph",
-      "data" : {
-        "text" : "89146206190"
-      }
-    },{
-      "type" : "delimiter",
-      "data" : {}
-    },
-    {
-      "type" : "paragraph",
-      "data" : {
-        "text" : "89146206190"
-      }
-    },{
-      "type" : "delimiter",
-      "data" : {}
-    },
-    {
-      "type" : "paragraph",
-      "data" : {
-        "text" : "89146206190"
-      }
-    },
-    {
-      "type": "image",
-      "data": {
-        "file": {
-          "url": "https:\/\/static.tildacdn.com\/tild6366-6666-4765-b065-633965636536\/logo.png"
-        },
-
-        "withBorder": false,
-        "stretched": true,
-        "withBackground": false
-      }
-    },
-    {
-      "type" : "image",
-      "data" : {
-        "file" : {
-          "url" : "https://vesort.ru/wa-data/public/photos/70/00/70/70.1500x0.jpg"
-        },
-        "caption" : "Here could be some caption for this picture",
-        "withBorder" : false,
-        "stretched" : true,
-        "withBackground" : true
-      }
-    },
-    {
-      "type" : "rawTool",
-      "data" : {
-        "html" : "<h1>Header</h1>\n  <!-- Комментарий -->\n  <p>First paragraph.</p>\n  <p>Second paragraph.</p>"
-      }
-    },
-    {
-      "type" : "table",
-      "data" : {
-        "content" : [
-          [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          [
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          [
-            "9",
-            "10",
-            "11",
-            "12"
-          ]
-        ]
+        "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any raw HTML code</div>"
       }
     }
   ],
-  "version" : "2.12.3"
+  "version" : "2.13.2"
 }

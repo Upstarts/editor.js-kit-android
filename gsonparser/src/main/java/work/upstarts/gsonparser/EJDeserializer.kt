@@ -4,6 +4,8 @@ import com.google.gson.*
 import work.upstarts.editorjskit.EJKit
 import work.upstarts.editorjskit.models.*
 import work.upstarts.editorjskit.models.data.EJDelimiterData
+import work.upstarts.editorjskit.models.data.EJListData
+import work.upstarts.editorjskit.models.data.ListType
 import java.lang.reflect.Type
 
 class EJDeserializer : JsonDeserializer<MutableList<EJBlock>> {
@@ -33,7 +35,13 @@ class EJDeserializer : JsonDeserializer<MutableList<EJBlock>> {
                         EJBlockType.DELIMITER -> EJDelimiterBlock(it, EJDelimiterData())
                         EJBlockType.PARAGRAPH -> EJParagraphBlock(it, fromJson(data))
                         EJBlockType.HEADER -> EJHeaderBlock(it, fromJson(data))
-                        EJBlockType.LIST -> EJListBlock(it, fromJson(data))
+                        EJBlockType.LIST -> EJListBlock(
+                            it,
+                            EJListData(
+                                ListType.fromStyle(data["style"].asString),
+                                data["items"].asJsonArray.map { item -> item.asString }
+                            )
+                        )
                         EJBlockType.RAW_HTML -> EJRawHtmlBlock(it, fromJson(data))
                         EJBlockType.TABLE -> EJTableBlock(it, fromJson(data))
                     }

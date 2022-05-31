@@ -1,6 +1,7 @@
 package work.upstarts
 
 import android.content.res.AssetManager
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import work.upstarts.editorjskit.environment.dp
 import work.upstarts.editorjskit.models.EJBlock
 import work.upstarts.editorjskit.models.HeadingLevel
 import work.upstarts.editorjskit.ui.EditorJsAdapter
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
                 .headingMargin(
-                    STANDARD_MARGIN,
+                    ZERO_MARGIN,
                     ZERO_MARGIN,
                     ZERO_MARGIN,
                     ZERO_MARGIN,
@@ -40,9 +42,9 @@ class MainActivity : AppCompatActivity() {
                     HeadingLevel.h2
                 )
                 .linkColor(ContextCompat.getColor(this, R.color.link_color))
-                .listTextItemTextSize(18f)
-                .dividerBreakHeight(DIVIDER_HEIGHT)
-                .dividerBreakHeight(DIVIDER_HEIGHT)
+                .dividerBreakHeight(DIVIDER_HEIGHT.dp)
+                .dividerMargin(0.dp, 4.dp, 0.dp, 4.dp)
+                .dividerBreakColor(Color.parseColor("#32000000"))
                 .build()
         )
     }
@@ -76,8 +78,7 @@ fun readFileFromAssets(fname: String, assetsManager: AssetManager) =
 
 const val ZERO_MARGIN = 0
 const val STANDARD_MARGIN = 16
-const val DIVIDER_HEIGHT = 3
-const val BULLET_SIZE = 16
+const val DIVIDER_HEIGHT = 1
 
 
 
