@@ -46,7 +46,7 @@ class ListAdapterDelegate(
             containerLayout.removeAllViews()
             theme?.applyListMargin(itemView)
             listData.items.forEachIndexed { index, s ->
-                if (listData.type == ListType.ORDERED)
+                if (listData.style == ListType.ORDERED)
                     prefix = "${index + 1}."
                 inflateSectionTitle(s, itemView, prefix)
             }

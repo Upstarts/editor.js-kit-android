@@ -43,15 +43,14 @@ dependencies {
     testImplementation "junit:junit:${versions.junit}"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                artifactId "ejkit"
-                groupId "work.upstarts.editorjskit"
-                version "${versions.publishVersion}"
-            }
-        }
-    }
+
+ext {
+    // group id
+    PUBLISH_GROUP_ID = 'io.github.upstarts'
+    // текущая версия библиотеки
+    PUBLISH_VERSION = "${versions.publishVersion}"
+    // artifact id библиотеки
+    PUBLISH_ARTIFACT_ID = 'ejkit'
 }
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
