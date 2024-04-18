@@ -130,4 +130,4 @@ You can find and test the example in a [sample activity](app/src/main/java/work/
 
 [Ruslan Aliev](https://github.com/heckslam) - Architecture, Implementation
 
-[Vadim Popov](https://t.me/popovvadim) - Architecture draft
+[Vadim Popov](https://github.com/PopovVadim) - Architecture draft
