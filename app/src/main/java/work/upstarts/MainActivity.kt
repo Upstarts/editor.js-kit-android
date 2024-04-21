@@ -15,6 +15,7 @@ import work.upstarts.editorjskit.models.HeadingLevel
 import work.upstarts.editorjskit.ui.EditorJsAdapter
 import work.upstarts.editorjskit.ui.theme.EJStyle
 import work.upstarts.gsonparser.EJDeserializer
+import work.upstarts.editorjskit.R as EditorJsR
 
 const val DATA_JSON_PATH = "dummy_data.json"
 
@@ -25,8 +26,8 @@ class MainActivity : AppCompatActivity() {
     private val rvAdapter: EditorJsAdapter by lazy {
         EditorJsAdapter(
             EJStyle.builderWithDefaults(applicationContext)
-                .linkColor(ContextCompat.getColor(this, R.color.link_color))
-                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .linkColor(ContextCompat.getColor(this, EditorJsR.color.link_color))
+                .linkColor(ContextCompat.getColor(this, EditorJsR.color.link_color))
                 .headingMargin(
                     ZERO_MARGIN,
                     ZERO_MARGIN,
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     ZERO_MARGIN,
                     HeadingLevel.h2
                 )
-                .linkColor(ContextCompat.getColor(this, R.color.link_color))
+                .linkColor(ContextCompat.getColor(this, EditorJsR.color.link_color))
                 .dividerBreakHeight(DIVIDER_HEIGHT.dp)
                 .dividerMargin(0.dp, 4.dp, 0.dp, 4.dp)
                 .dividerBreakColor(Color.parseColor("#32000000"))
