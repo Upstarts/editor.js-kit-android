@@ -12,7 +12,7 @@ enum class ListType(private val jsonName: String) {
     override fun toString() = jsonName
 
     companion object {
-        fun fromStyle(style: String) = values().first { it.jsonName == style }
+        fun fromStyle(style: String) = entries.first { it.jsonName == style }
     }
 
 }
