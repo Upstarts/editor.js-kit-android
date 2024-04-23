@@ -13,10 +13,10 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-plugins {
+/*plugins {
     // плагин для автоматизации публикации нашей либы
     id "io.github.gradle-nexus.publish-plugin" version "2.0.0"
-}
+}*/
 allprojects {
     repositories {
         google()
@@ -27,7 +27,7 @@ allprojects {
 
 
 // позже мы добавим скрипты для публикации
-apply from: "${rootDir}/scripts/publish-root.gradle"
+//apply from: "${rootDir}/scripts/publish-root.gradle"
 
 task clean(type: Delete) {
     delete rootProject.buildDir
