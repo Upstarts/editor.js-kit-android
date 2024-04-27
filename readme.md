@@ -6,7 +6,7 @@
 </picture>
 </p>
 
-![Maven Central](https://img.shields.io/maven-central/v/io.github.upstarts/ejkit)
+[![](https://jitpack.io/v/Upstarts/editor.js-kit-android.svg)](https://jitpack.io/#Upstarts/editor.js-kit-android)
 ## About
 
 A non-official Android Framework for [Editor.js](https://editorjs.io) - block styled editor. It's purpose to make easy use of rendering and parsing of blocks.
@@ -27,7 +27,18 @@ Converts clean json blocks data like [this](app/src/main/assets/dummy_data.json)
 * 📋 Table
 
 ## Installation
+add jitpack repo:
+```
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
+*.kts
+repositories {
+    maven { setUrl("https://jitpack.io") }
+}
+```
+add dependency:
 ```
 implementation 'com.github.Upstarts.editor-js-kit-android:ejkit:X.X.X' - look at badge above for latest version
 implementation 'com.github.Upstarts.editor-js-kit-android:ejkit-gson:X.X.X' - adds GSON adapter. If you use other library for parsing json, you need to write adapter yourself.
